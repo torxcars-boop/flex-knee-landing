@@ -1,0 +1,1442 @@
+"use client";
+
+import { FormEvent, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Activity,
+  ArrowRight,
+  Check,
+  ChevronDown,
+  Minus,
+  Plus,
+  Ruler,
+  ShieldCheck,
+  ShoppingBag,
+  Truck,
+  Zap,
+} from "lucide-react";
+
+type Language = "en" | "ar";
+
+
+const WHATSAPP_NUMBER = "201115491611";
+
+const copy = {
+  en: {
+    navTechnology: "Technology",
+    navProduct: "Product",
+    navActivities: "Activities",
+    buyNow: "BUY NOW",
+
+    badge: "NEXT-GEN KNEE SUPPORT",
+
+    heroTitle1: "STRONGER",
+    heroAccent: "SUPPORT.",
+    heroTitle2: "BETTER",
+    heroTitle3: "MOVEMENT.",
+
+    heroDescription:
+      "Premium compression knee support engineered for stability, flexibility and confident movement.",
+
+    shopNow: "SHOP NOW",
+    explore: "EXPLORE TECHNOLOGY",
+
+    flexible: "Flexible Knit",
+    antiSlip: "Anti-Slip",
+    breathable: "Breathable",
+
+    advancedSupport: "Advanced Support",
+    flexibleMotion: "Flexible Motion",
+    fastDelivery: "Fast Delivery",
+    secureFit: "Secure Fit",
+
+    whyLabel: "WHY FLEX?",
+    whyTitle1: "Support that moves",
+    whyTitle2: "with you.",
+
+    whyDescription:
+      "FLEX combines supportive compression with a flexible athletic construction designed for everyday movement and active performance.",
+
+    feature1Title: "Advanced Support",
+    feature1Text:
+      "Targeted compression provides a secure and supportive feel while you move.",
+
+    feature2Title: "Premium Comfort",
+    feature2Text:
+      "Flexible knitted construction designed to move naturally with your body.",
+
+    feature3Title: "Free Movement",
+    feature3Text:
+      "A lightweight athletic profile designed to keep you moving without unnecessary bulk.",
+
+    feature4Title: "Secure Fit",
+    feature4Text:
+      "A supportive anti-slip design helps keep the sleeve where it belongs.",
+
+    performanceLabel: "PERFORMANCE",
+    performanceTitle1: "Built for your",
+    performanceTitle2: "active lifestyle.",
+
+    performanceDescription:
+      "From warm-up to final rep, FLEX is designed to provide a supportive feel without sacrificing mobility.",
+
+    performance1: "Flexible compression construction",
+    performance2: "Breathable knitted material",
+    performance3: "Lightweight athletic design",
+    performance4: "Secure anti-slip fit",
+
+    detailsLabel: "PRECISION DETAILS",
+    detailsTitle: "Every detail has a purpose.",
+
+    detailsDescription:
+      "Designed with the details that matter when you are moving.",
+
+    activitiesLabel: "MADE FOR MOVEMENT",
+    activitiesTitle1: "One sleeve.",
+    activitiesTitle2: "Endless movement.",
+
+    activitiesDescription:
+      "Whether you are training, running, cycling or staying active throughout the day, FLEX is designed to fit naturally into your routine.",
+
+    training: "Training",
+    running: "Running",
+    cycling: "Cycling",
+    everyday: "Everyday",
+
+    sizeLabel: "FIND YOUR FIT",
+    sizeTitle1: "Choose your",
+    sizeTitle2: "perfect size.",
+
+    sizeDescription:
+      "A proper fit helps deliver the right balance of comfort, compression and stability.",
+
+    orderLabel: "ORDER NOW",
+    orderTitle: "Get your FLEX support.",
+
+    orderDescription:
+      "Complete your information below and we will contact you to confirm your order.",
+
+    fullName: "Full Name",
+    phone: "Phone Number",
+    governorate: "City / Governorate",
+    address: "Detailed Address",
+    size: "Size",
+    quantity: "Quantity",
+    notes: "Order Notes",
+    notesOptional: "Optional",
+
+    payment: "Payment Method",
+    cashDelivery: "Cash on Delivery",
+    paymentDescription: "Pay when your order arrives.",
+
+    summary: "ORDER SUMMARY",
+    product: "FLEX Knee Support",
+    subtotal: "Subtotal",
+    delivery: "Delivery",
+    free: "FREE",
+    total: "TOTAL",
+
+    placeOrder: "PLACE ORDER ON WHATSAPP",
+    processing: "OPENING WHATSAPP...",
+
+    successTitle: "ORDER READY!",
+    successDescription:
+      "Your order details have been prepared for WhatsApp. Send the message to complete your order.",
+
+    orderAgain: "ORDER AGAIN",
+
+    readyLabel: "READY TO MOVE?",
+    readyTitle: "Upgrade your support.",
+
+    readyDescription:
+      "Premium knee support designed for stability, flexibility and confident movement.",
+
+    privacy: "Privacy",
+    terms: "Terms",
+    contact: "Contact",
+
+    egp: "EGP",
+  },
+
+  ar: {
+    navTechnology: "التقنية",
+    navProduct: "المنتج",
+    navActivities: "الاستخدامات",
+    buyNow: "اشترِ الآن",
+
+    badge: "دعامة ركبة متطورة",
+
+    heroTitle1: "دعم",
+    heroAccent: "أقوى.",
+    heroTitle2: "حركة",
+    heroTitle3: "أفضل.",
+
+    heroDescription:
+      "دعامة ركبة احترافية بضغط متوازن مصممة لتوفير الثبات والمرونة والثقة أثناء الحركة.",
+
+    shopNow: "اشترِ الآن",
+    explore: "اكتشف التقنية",
+
+    flexible: "نسيج مرن",
+    antiSlip: "مضادة للانزلاق",
+    breathable: "جيدة التهوية",
+
+    advancedSupport: "دعم متقدم",
+    flexibleMotion: "حركة مرنة",
+    fastDelivery: "توصيل سريع",
+    secureFit: "ثبات آمن",
+
+    whyLabel: "لماذا FLEX؟",
+    whyTitle1: "دعم يتحرك",
+    whyTitle2: "معك.",
+
+    whyDescription:
+      "تجمع FLEX بين الضغط الداعم والتصميم الرياضي المرن لتمنحك راحة وثباتًا أثناء الحركة والنشاط.",
+
+    feature1Title: "دعم متقدم",
+    feature1Text:
+      "ضغط متوازن يمنح الركبة إحساسًا بالثبات والدعم أثناء الحركة.",
+
+    feature2Title: "راحة مميزة",
+    feature2Text:
+      "نسيج مرن مصمم ليتحرك بشكل طبيعي مع حركة الجسم.",
+
+    feature3Title: "حرية الحركة",
+    feature3Text:
+      "تصميم رياضي خفيف يساعدك على الحركة دون حجم زائد.",
+
+    feature4Title: "ثبات آمن",
+    feature4Text:
+      "تصميم مضاد للانزلاق يساعد الدعامة على البقاء في مكانها.",
+
+    performanceLabel: "الأداء",
+    performanceTitle1: "مصممة لأسلوب",
+    performanceTitle2: "حياتك النشط.",
+
+    performanceDescription:
+      "من بداية التمرين وحتى آخر حركة، FLEX تمنحك دعمًا جيدًا دون التضحية بحرية الحركة.",
+
+    performance1: "ضغط مرن ومتوازن",
+    performance2: "خامة جيدة التهوية",
+    performance3: "تصميم رياضي خفيف",
+    performance4: "ثبات مضاد للانزلاق",
+
+    detailsLabel: "تفاصيل دقيقة",
+    detailsTitle: "كل تفصيلة لها هدف.",
+
+    detailsDescription:
+      "تم تصميمها بعناية مع التركيز على التفاصيل التي تحتاجها أثناء الحركة.",
+
+    activitiesLabel: "مصممة للحركة",
+    activitiesTitle1: "دعامة واحدة.",
+    activitiesTitle2: "حركة بلا حدود.",
+
+    activitiesDescription:
+      "سواء كنت تتمرن أو تجري أو تركب الدراجة أو تتحرك طوال اليوم، FLEX مصممة لتناسب روتينك.",
+
+    training: "التمرين",
+    running: "الجري",
+    cycling: "ركوب الدراجة",
+    everyday: "الاستخدام اليومي",
+
+    sizeLabel: "اختر المقاس",
+    sizeTitle1: "اختر",
+    sizeTitle2: "المقاس المناسب.",
+
+    sizeDescription:
+      "اختيار المقاس المناسب يساعد على تحقيق التوازن بين الراحة والضغط والثبات.",
+
+    orderLabel: "اطلب الآن",
+    orderTitle: "احصل على دعامة FLEX.",
+
+    orderDescription:
+      "أدخل بياناتك بالأسفل وسنتواصل معك لتأكيد تفاصيل الطلب.",
+
+    fullName: "الاسم بالكامل",
+    phone: "رقم الهاتف",
+    governorate: "المحافظة / المدينة",
+    address: "العنوان بالتفصيل",
+    size: "المقاس",
+    quantity: "الكمية",
+    notes: "ملاحظات الطلب",
+    notesOptional: "اختياري",
+
+    payment: "طريقة الدفع",
+    cashDelivery: "الدفع عند الاستلام",
+    paymentDescription: "ادفع عند وصول الطلب.",
+
+    summary: "ملخص الطلب",
+    product: "دعامة ركبة FLEX",
+    subtotal: "سعر المنتج",
+    delivery: "التوصيل",
+    free: "مجانًا",
+    total: "الإجمالي",
+
+    placeOrder: "إتمام الطلب عبر واتساب",
+    processing: "جاري فتح واتساب...",
+
+    successTitle: "الطلب جاهز!",
+    successDescription:
+      "تم تجهيز بيانات طلبك وإرسالها إلى واتساب. اضغط إرسال داخل واتساب لإكمال الطلب.",
+
+    orderAgain: "طلب جديد",
+
+    readyLabel: "جاهز للحركة؟",
+    readyTitle: "طوّر مستوى الدعم.",
+
+    readyDescription:
+      "دعامة ركبة احترافية مصممة للثبات والمرونة والثقة أثناء الحركة.",
+
+    privacy: "الخصوصية",
+    terms: "الشروط",
+    contact: "تواصل معنا",
+
+    egp: "جنيه",
+  },
+};
+
+const features = [
+  {
+    icon: ShieldCheck,
+    number: "01",
+    title: "feature1Title",
+    text: "feature1Text",
+  },
+  {
+    icon: Zap,
+    number: "02",
+    title: "feature2Title",
+    text: "feature2Text",
+  },
+  {
+    icon: Activity,
+    number: "03",
+    title: "feature3Title",
+    text: "feature3Text",
+  },
+  {
+    icon: Check,
+    number: "04",
+    title: "feature4Title",
+    text: "feature4Text",
+  },
+] as const;
+
+export default function Home() {
+  const [language, setLanguage] = useState<Language>("en");
+  const [size, setSize] = useState("M");
+  const [quantity, setQuantity] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
+  const [processing, setProcessing] = useState(false);
+
+  const t = copy[language];
+  const isArabic = language === "ar";
+
+  const total = useMemo(
+    () => PRODUCT_PRICE * quantity,
+    [quantity]
+  );
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat(isArabic ? "ar-EG" : "en-EG").format(
+      price
+    );
+  };
+
+  const scrollToOrder = () => {
+    document.getElementById("order")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  const changeLanguage = () => {
+    setLanguage((current) => (current === "en" ? "ar" : "en"));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    setProcessing(true);
+
+    const formData = new FormData(form);
+
+    const name = String(formData.get("name") || "");
+    const phone = String(formData.get("phone") || "");
+    const governorate = String(
+      formData.get("governorate") || ""
+    );
+    const address = String(formData.get("address") || "");
+    const notes = String(formData.get("notes") || "");
+
+    const whatsappMessage = isArabic
+      ? `🛒 *طلب جديد - FLEX*
+
+👤 *اسم العميل:*
+${name}
+
+📱 *رقم الهاتف:*
+${phone}
+
+📍 *المحافظة / المدينة:*
+${governorate}
+
+🏠 *العنوان:*
+${address}
+
+📏 *المقاس:*
+${size}
+
+🔢 *الكمية:*
+${quantity}
+
+💰 *الإجمالي:*
+${formatPrice(total)} جنيه
+
+🚚 *التوصيل:*
+مجانًا
+
+💳 *طريقة الدفع:*
+الدفع عند الاستلام
+
+📝 *ملاحظات:*
+${notes || "لا توجد"}
+
+━━━━━━━━━━━━━━━━
+FLEX PERFORMANCE`
+      : `🛒 *NEW FLEX ORDER*
+
+👤 *Customer Name:*
+${name}
+
+📱 *Phone:*
+${phone}
+
+📍 *City / Governorate:*
+${governorate}
+
+🏠 *Address:*
+${address}
+
+📏 *Size:*
+${size}
+
+🔢 *Quantity:*
+${quantity}
+
+💰 *Total:*
+${formatPrice(total)} EGP
+
+🚚 *Delivery:*
+FREE
+
+💳 *Payment:*
+Cash on Delivery
+
+📝 *Notes:*
+${notes || "None"}
+
+━━━━━━━━━━━━━━━━
+FLEX PERFORMANCE`;
+
+    const whatsappUrl =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=` +
+      encodeURIComponent(whatsappMessage);
+
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    setTimeout(() => {
+      setProcessing(false);
+      setSubmitted(true);
+    }, 600);
+  };
+
+  const resetOrder = () => {
+    setSubmitted(false);
+    setQuantity(1);
+    setSize("M");
+
+    setTimeout(() => {
+      document.getElementById("order")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 50);
+  };
+
+  return (
+    <main
+      dir={isArabic ? "rtl" : "ltr"}
+      className="min-h-screen overflow-x-hidden bg-[#050607] text-white"
+    >
+      {/* ================= NAVBAR ================= */}
+
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#050607]/85 backdrop-blur-xl">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+          <a
+            href="#"
+            className="flex items-center gap-3"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8cff00] text-black shadow-[0_0_35px_rgba(140,255,0,.2)]">
+              <Zap
+                size={19}
+                fill="currentColor"
+              />
+            </div>
+
+            <div>
+              <div className="text-lg font-black tracking-tight">
+                FLEX
+              </div>
+
+              <div className="text-[8px] font-bold tracking-[0.35em] text-white/30">
+                PERFORMANCE
+              </div>
+            </div>
+          </a>
+
+          <nav className="hidden items-center gap-8 text-sm text-white/50 md:flex">
+            <a
+              href="#technology"
+              className="transition hover:text-white"
+            >
+              {t.navTechnology}
+            </a>
+
+            <a
+              href="#product"
+              className="transition hover:text-white"
+            >
+              {t.navProduct}
+            </a>
+
+            <a
+              href="#activities"
+              className="transition hover:text-white"
+            >
+              {t.navActivities}
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={changeLanguage}
+              className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-black text-white/70 transition hover:border-[#8cff00]/30 hover:text-[#8cff00]"
+            >
+              {isArabic ? "EN" : "عربي"}
+            </button>
+
+            <button
+              type="button"
+              onClick={scrollToOrder}
+              className="hidden rounded-full bg-[#8cff00] px-6 py-3 text-sm font-black text-black transition hover:scale-105 sm:block"
+            >
+              {t.buyNow}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* ================= HERO ================= */}
+
+      <section className="relative min-h-screen overflow-hidden pt-20">
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "70px 70px",
+          }}
+        />
+
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8cff00]/10 blur-[170px]" />
+
+        <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl items-center px-5 py-12 lg:grid-cols-2 lg:px-8">
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: isArabic ? -40 : 40,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="relative z-10"
+          >
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#8cff00]/20 bg-[#8cff00]/5 px-4 py-2 text-xs font-bold tracking-wide text-[#8cff00]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#8cff00] shadow-[0_0_12px_#8cff00]" />
+              {t.badge}
+            </div>
+
+            <h1 className="text-6xl font-black leading-[0.92] tracking-[-0.045em] sm:text-7xl lg:text-[82px]">
+              {t.heroTitle1}
+              <br />
+
+              <span className="text-[#8cff00]">
+                {t.heroAccent}
+              </span>
+
+              <br />
+
+              {t.heroTitle2}
+              <br />
+
+              {t.heroTitle3}
+            </h1>
+
+            <p className="mt-7 max-w-xl text-base leading-8 text-white/40 sm:text-lg">
+              {t.heroDescription}
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={scrollToOrder}
+                className="group flex items-center justify-center gap-3 rounded-2xl bg-[#8cff00] px-8 py-4 font-black text-black transition hover:scale-[1.03]"
+              >
+                <ShoppingBag size={18} />
+
+                {t.shopNow}
+
+                <ArrowRight
+                  size={18}
+                  className="transition group-hover:translate-x-1"
+                />
+              </button>
+
+              <a
+                href="#technology"
+                className="flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-4 font-bold text-white/70 transition hover:bg-white/[0.06]"
+              >
+                {t.explore}
+              </a>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-6 text-xs text-white/30">
+              <span className="flex items-center gap-2">
+                <Check
+                  size={14}
+                  className="text-[#8cff00]"
+                />
+
+                {t.flexible}
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Check
+                  size={14}
+                  className="text-[#8cff00]"
+                />
+
+                {t.antiSlip}
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Check
+                  size={14}
+                  className="text-[#8cff00]"
+                />
+
+                {t.breathable}
+              </span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.85,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1,
+            }}
+            className="relative flex h-[600px] items-center justify-center"
+          >
+            <div className="absolute h-[500px] w-[500px] rounded-full bg-[#8cff00]/10 blur-[110px]" />
+
+            <img
+              src="/product/hero-premium.png"
+              alt="FLEX Premium Knee Support"
+              className="relative z-10 max-h-[570px] w-full max-w-[650px] object-contain drop-shadow-[0_35px_80px_rgba(0,0,0,.8)]"
+            />
+
+            <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-black/70 px-5 py-2 text-[10px] font-bold tracking-[0.2em] text-white/40 backdrop-blur-xl">
+              FLEX PERFORMANCE
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/20">
+          <motion.div
+            animate={{
+              y: [0, 8, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+            }}
+          >
+            <ChevronDown size={22} />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= TRUST ================= */}
+
+      <section className="border-y border-white/[0.06] bg-white/[0.015]">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-4">
+          {[
+            [ShieldCheck, t.advancedSupport],
+            [Zap, t.flexibleMotion],
+            [Truck, t.fastDelivery],
+            [Check, t.secureFit],
+          ].map(([Icon, text]) => {
+            const FeatureIcon =
+              Icon as typeof ShieldCheck;
+
+            return (
+              <div
+                key={String(text)}
+                className="flex items-center justify-center gap-3 border-white/[0.05] px-4 py-7 text-xs text-white/40 sm:border-l"
+              >
+                <FeatureIcon
+                  size={18}
+                  className="text-[#8cff00]"
+                />
+
+                {String(text)}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ================= WHY FLEX ================= */}
+
+      <section
+        id="technology"
+        className="py-28"
+      >
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-14 lg:grid-cols-2">
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: isArabic ? 40 : -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="overflow-hidden rounded-[40px] border border-white/[0.08] bg-[#090b0d]"
+            >
+              <img
+                src="/product/why-flex.png"
+                alt="Why choose FLEX"
+                className="w-full object-cover"
+              />
+            </motion.div>
+
+            <div>
+              <div className="text-sm font-black tracking-widest text-[#8cff00]">
+                {t.whyLabel}
+              </div>
+
+              <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
+                {t.whyTitle1}
+                <br />
+
+                <span className="text-white/30">
+                  {t.whyTitle2}
+                </span>
+              </h2>
+
+              <p className="mt-6 max-w-xl leading-8 text-white/40">
+                {t.whyDescription}
+              </p>
+
+              <div className="mt-9 grid gap-4 sm:grid-cols-2">
+                {features.map((feature) => {
+                  const Icon = feature.icon;
+
+                  return (
+                    <div
+                      key={feature.number}
+                      className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5"
+                    >
+                      <div className="flex items-center justify-between">
+                        <Icon
+                          size={22}
+                          className="text-[#8cff00]"
+                        />
+
+                        <span className="text-xs text-white/20">
+                          {feature.number}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-4 font-black">
+                        {t[
+                          feature.title as keyof typeof t
+                        ] as string}
+                      </h3>
+
+                      <p className="mt-2 text-xs leading-6 text-white/35">
+                        {t[
+                          feature.text as keyof typeof t
+                        ] as string}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PERFORMANCE ================= */}
+
+      <section
+        id="product"
+        className="border-y border-white/[0.05] bg-white/[0.015] py-28"
+      >
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-14 lg:grid-cols-2">
+            <div>
+              <div className="text-sm font-black tracking-widest text-[#8cff00]">
+                {t.performanceLabel}
+              </div>
+
+              <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+                {t.performanceTitle1}
+                <br />
+
+                <span className="text-white/30">
+                  {t.performanceTitle2}
+                </span>
+              </h2>
+
+              <p className="mt-6 leading-8 text-white/40">
+                {t.performanceDescription}
+              </p>
+
+              <div className="mt-8 space-y-4">
+                {[
+                  t.performance1,
+                  t.performance2,
+                  t.performance3,
+                  t.performance4,
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 text-sm text-white/60"
+                  >
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#8cff00]/10 text-[#8cff00]">
+                      <Check size={14} />
+                    </div>
+
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: isArabic ? -40 : 40,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="overflow-hidden rounded-[40px] border border-white/[0.08] bg-[#090b0d]"
+            >
+              <img
+                src="/product/performance.png"
+                alt="FLEX performance"
+                className="w-full object-cover"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= DETAILS ================= */}
+
+      <section className="py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="text-sm font-black tracking-widest text-[#8cff00]">
+              {t.detailsLabel}
+            </div>
+
+            <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+              {t.detailsTitle}
+            </h2>
+
+            <p className="mt-5 leading-8 text-white/40">
+              {t.detailsDescription}
+            </p>
+          </div>
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            className="mt-14 overflow-hidden rounded-[40px] border border-white/[0.08] bg-[#090b0d]"
+          >
+            <img
+              src="/product/detail-closeup.png"
+              alt="FLEX product details"
+              className="w-full"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= ACTIVITIES ================= */}
+
+      <section
+        id="activities"
+        className="border-y border-white/[0.05] bg-white/[0.015] py-28"
+      >
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: isArabic ? 40 : -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="overflow-hidden rounded-[40px] border border-white/[0.08]"
+            >
+              <img
+                src="/product/activities.png"
+                alt="FLEX activities"
+                className="w-full"
+              />
+            </motion.div>
+
+            <div>
+              <div className="text-sm font-black tracking-widest text-[#8cff00]">
+                {t.activitiesLabel}
+              </div>
+
+              <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+                {t.activitiesTitle1}
+                <br />
+
+                <span className="text-white/30">
+                  {t.activitiesTitle2}
+                </span>
+              </h2>
+
+              <p className="mt-6 leading-8 text-white/40">
+                {t.activitiesDescription}
+              </p>
+
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                {[
+                  t.training,
+                  t.running,
+                  t.cycling,
+                  t.everyday,
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/[0.07] bg-white/[0.025] px-5 py-4 text-sm font-bold text-white/60"
+                  >
+                    <span className="mr-2 text-[#8cff00]">
+                      +
+                    </span>
+
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SIZE ================= */}
+
+      <section className="py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-14 lg:grid-cols-2">
+            <div>
+              <div className="flex items-center gap-2 text-sm font-black tracking-widest text-[#8cff00]">
+                <Ruler size={16} />
+                {t.sizeLabel}
+              </div>
+
+              <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+                {t.sizeTitle1}
+                <br />
+
+                <span className="text-white/30">
+                  {t.sizeTitle2}
+                </span>
+              </h2>
+
+              <p className="mt-6 leading-8 text-white/40">
+                {t.sizeDescription}
+              </p>
+
+              <div className="mt-8 grid grid-cols-4 gap-2">
+                {["M", "L", "XL", "XXL"].map(
+                  (item) => (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => setSize(item)}
+                      className={`rounded-xl border py-4 font-black transition ${
+                        size === item
+                          ? "border-[#8cff00] bg-[#8cff00] text-black"
+                          : "border-white/10 bg-white/[0.03] text-white/70 hover:border-[#8cff00]/50 hover:text-[#8cff00]"
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  )
+                )}
+              </div>
+            </div>
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: isArabic ? -40 : 40,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="overflow-hidden rounded-[40px] border border-white/[0.08] bg-[#090b0d]"
+            >
+              <img
+                src="/product/sizes.png"
+                alt="FLEX size guide"
+                className="w-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= ORDER ================= */}
+
+      <section
+        id="order"
+        className="scroll-mt-24 border-t border-white/[0.05] px-5 py-28"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <div className="text-sm font-black tracking-[0.25em] text-[#8cff00]">
+              {t.orderLabel}
+            </div>
+
+            <h2 className="mt-4 text-4xl font-black sm:text-6xl">
+              {t.orderTitle}
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-xl leading-8 text-white/40">
+              {t.orderDescription}
+            </p>
+          </div>
+
+          {submitted ? (
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.95,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              className="mx-auto max-w-3xl rounded-[40px] border border-[#8cff00]/20 bg-[#0b1008] p-10 text-center sm:p-16"
+            >
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#8cff00]/10 text-[#8cff00]">
+                <Check size={38} />
+              </div>
+
+              <h3 className="mt-7 text-3xl font-black sm:text-4xl">
+                {t.successTitle}
+              </h3>
+
+              <p className="mx-auto mt-5 max-w-xl leading-8 text-white/40">
+                {t.successDescription}
+              </p>
+
+              <button
+                type="button"
+                onClick={resetOrder}
+                className="mt-8 rounded-2xl bg-[#8cff00] px-8 py-4 font-black text-black transition hover:scale-105"
+              >
+                {t.orderAgain}
+              </button>
+            </motion.div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="grid gap-6 lg:grid-cols-[1.25fr_.75fr]"
+            >
+              {/* FORM */}
+
+              <div className="rounded-[35px] border border-white/[0.08] bg-white/[0.025] p-6 sm:p-8">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-bold text-white/50">
+                      {t.fullName} *
+                    </span>
+
+                    <input
+                      required
+                      name="name"
+                      type="text"
+                      placeholder={t.fullName}
+                      className="h-14 w-full rounded-xl border border-white/10 bg-black/30 px-4 text-sm text-white outline-none transition placeholder:text-white/20 focus:border-[#8cff00]/60"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-bold text-white/50">
+                      {t.phone} *
+                    </span>
+
+                    <input
+                      required
+                      name="phone"
+                      type="tel"
+                      placeholder={t.phone}
+                      className="h-14 w-full rounded-xl border border-white/10 bg-black/30 px-4 text-sm text-white outline-none transition placeholder:text-white/20 focus:border-[#8cff00]/60"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-bold text-white/50">
+                      {t.governorate} *
+                    </span>
+
+                    <input
+                      required
+                      name="governorate"
+                      type="text"
+                      placeholder={t.governorate}
+                      className="h-14 w-full rounded-xl border border-white/10 bg-black/30 px-4 text-sm text-white outline-none transition placeholder:text-white/20 focus:border-[#8cff00]/60"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-2 block text-xs font-bold text-white/50">
+                      {t.size} *
+                    </span>
+
+                    <select
+                      required
+                      name="size"
+                      value={size}
+                      onChange={(event) =>
+                        setSize(event.target.value)
+                      }
+                      className="h-14 w-full rounded-xl border border-white/10 bg-[#0b0c0d] px-4 text-sm text-white outline-none focus:border-[#8cff00]/60"
+                    >
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                      <option value="XXL">XXL</option>
+                    </select>
+                  </label>
+                </div>
+
+                <label className="mt-5 block">
+                  <span className="mb-2 block text-xs font-bold text-white/50">
+                    {t.address} *
+                  </span>
+
+                  <textarea
+                    required
+                    name="address"
+                    rows={4}
+                    placeholder={t.address}
+                    className="w-full resize-none rounded-xl border border-white/10 bg-black/30 p-4 text-sm text-white outline-none transition placeholder:text-white/20 focus:border-[#8cff00]/60"
+                  />
+                </label>
+
+                <label className="mt-5 block">
+                  <span className="mb-2 block text-xs font-bold text-white/50">
+                    {t.notes}{" "}
+                    <span className="text-white/20">
+                      ({t.notesOptional})
+                    </span>
+                  </span>
+
+                  <textarea
+                    name="notes"
+                    rows={3}
+                    placeholder={t.notes}
+                    className="w-full resize-none rounded-xl border border-white/10 bg-black/30 p-4 text-sm text-white outline-none transition placeholder:text-white/20 focus:border-[#8cff00]/60"
+                  />
+                </label>
+
+                {/* QUANTITY */}
+
+                <div className="mt-6">
+                  <span className="mb-3 block text-xs font-bold text-white/50">
+                    {t.quantity}
+                  </span>
+
+                  <div className="flex w-fit items-center overflow-hidden rounded-xl border border-white/10 bg-black/30">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setQuantity((current) =>
+                          Math.max(
+                            1,
+                            current - 1
+                          )
+                        )
+                      }
+                      className="flex h-12 w-12 items-center justify-center text-white/50 transition hover:bg-white/5 hover:text-white"
+                    >
+                      <Minus size={16} />
+                    </button>
+
+                    <div className="flex h-12 min-w-14 items-center justify-center border-x border-white/10 text-sm font-black">
+                      {quantity}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setQuantity((current) =>
+                          Math.min(
+                            10,
+                            current + 1
+                          )
+                        )
+                      }
+                      className="flex h-12 w-12 items-center justify-center text-white/50 transition hover:bg-white/5 hover:text-white"
+                    >
+                      <Plus size={16} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* PAYMENT */}
+
+                <div className="mt-7">
+                  <span className="mb-3 block text-xs font-bold text-white/50">
+                    {t.payment}
+                  </span>
+
+                  <div className="rounded-2xl border border-[#8cff00]/30 bg-[#8cff00]/5 p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-[#8cff00]">
+                        <div className="h-2.5 w-2.5 rounded-full bg-[#8cff00]" />
+                      </div>
+
+                      <div>
+                        <div className="font-bold text-white">
+                          {t.cashDelivery}
+                        </div>
+
+                        <div className="mt-1 text-xs text-white/35">
+                          {t.paymentDescription}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ORDER SUMMARY */}
+
+              <div className="h-fit rounded-[35px] border border-white/[0.08] bg-[#090b0d] p-6 sm:p-8 lg:sticky lg:top-28">
+                <div className="flex items-center gap-2 text-sm font-black tracking-widest text-[#8cff00]">
+                  <ShoppingBag size={17} />
+                  {t.summary}
+                </div>
+
+                <div className="mt-7 flex gap-4">
+                  <div className="h-24 w-24 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+                    <img
+                      src="/product/hero-premium.png"
+                      alt="FLEX Knee Support"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+
+                  <div>
+                    <h3 className="font-black">
+                      {t.product}
+                    </h3>
+
+                    <p className="mt-1 text-xs text-white/30">
+                      {t.size}: {size}
+                    </p>
+
+                    <p className="mt-1 text-xs text-white/30">
+                      {t.quantity}: {quantity}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="my-7 h-px bg-white/[0.07]" />
+
+                <div className="space-y-4 text-sm">
+                  <div className="flex justify-between text-white/40">
+                    <span>{t.subtotal}</span>
+
+                    <span>
+                      {formatPrice(
+                        PRODUCT_PRICE * quantity
+                      )}{" "}
+                      {t.egp}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between text-white/40">
+                    <span>{t.delivery}</span>
+
+                    <span className="font-bold text-[#8cff00]">
+                      {t.free}
+                    </span>
+                  </div>
+
+                  <div className="h-px bg-white/[0.07]" />
+
+                  <div className="flex items-end justify-between">
+                    <span className="font-bold text-white/50">
+                      {t.total}
+                    </span>
+
+                    <span className="text-3xl font-black">
+                      {formatPrice(total)}{" "}
+                      <span className="text-sm text-white/40">
+                        {t.egp}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={processing}
+                  className="mt-7 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#8cff00] px-6 py-5 font-black text-black transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {processing
+                    ? t.processing
+                    : t.placeOrder}
+
+                  {!processing && (
+                    <ArrowRight size={18} />
+                  )}
+                </button>
+
+                <div className="mt-5 flex items-center justify-center gap-2 text-center text-[11px] text-white/25">
+                  <ShieldCheck size={14} />
+                  {t.cashDelivery}
+                </div>
+              </div>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* ================= FINAL CTA ================= */}
+
+      <section className="px-5 py-28">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[45px] border border-[#8cff00]/20 bg-gradient-to-br from-[#11180c] to-[#070909] p-10 text-center sm:p-16">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8cff00]/10 blur-[120px]" />
+
+          <div className="relative">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#8cff00]/10 text-[#8cff00]">
+              <Zap size={28} />
+            </div>
+
+            <div className="mt-7 text-sm font-black tracking-[0.25em] text-[#8cff00]">
+              {t.readyLabel}
+            </div>
+
+            <h2 className="mt-4 text-4xl font-black sm:text-6xl">
+              {t.readyTitle}
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-xl leading-8 text-white/40">
+              {t.readyDescription}
+            </p>
+
+            <button
+              type="button"
+              onClick={scrollToOrder}
+              className="mt-9 inline-flex items-center gap-3 rounded-2xl bg-[#8cff00] px-10 py-5 font-black text-black transition hover:scale-105"
+            >
+              <ShoppingBag size={19} />
+              {t.buyNow}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= FOOTER ================= */}
+
+      <footer className="border-t border-white/[0.06] py-9">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-xs text-white/25 sm:flex-row lg:px-8">
+          <div>
+            © 2026 FLEX PERFORMANCE
+          </div>
+
+          <div className="flex gap-6">
+            <span>{t.privacy}</span>
+            <span>{t.terms}</span>
+            <span>{t.contact}</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}

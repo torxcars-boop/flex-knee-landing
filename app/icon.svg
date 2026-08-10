@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-labelledby="title desc">
+  <title id="title">FLEX Performance</title>
+  <desc id="desc">FLEX Performance logo with a lightning mark</desc>
+  <rect width="520" height="150" rx="30" fill="#050607"/>
+  <g transform="translate(24 25)">
+    <rect width="100" height="100" rx="25" fill="#8CFF00"/>
+    <path d="M59 12L31 58h22l-12 30 39-50H58z" fill="#050607"/>
+  </g>
+  <text x="150" y="75" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="900" letter-spacing="-3">FLEX</text>
+  <text x="153" y="105" fill="#FFFFFF" fill-opacity=".38" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="7">PERFORMANCE</text>
+</svg>
