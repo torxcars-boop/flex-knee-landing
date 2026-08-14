@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { CartProvider } from "@/components/cart-context";
 
 export const metadata: Metadata = {
-  title: "متجرك",
-  description: "متجر إلكتروني احترافي",
+  title: "FLEX | Premium Knee Support",
+  description:
+    "Premium knee support designed for stability, comfort, and better movement.",
+  verification: {
+    google: "FZMQJFMYJMuTGEZWk3iEhFbKV0OSkbw1flZwM2tmVMM",
+  },
 };
 
 export default function RootLayout({
@@ -13,12 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
-      <body>
-        <CartProvider>
-          {children}
-        </CartProvider>
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }
