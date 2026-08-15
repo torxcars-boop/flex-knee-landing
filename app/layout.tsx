@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "FLEX | Premium Knee Support",
   description:
-    "FLEX Premium Knee Support provides comfortable and reliable support for everyday movement, exercise, and active lifestyles.",
+    "Discover FLEX premium knee support designed for comfort, stability, and everyday movement.",
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: "https://flex-knee-landing.vercel.app/",
   },
 };
 
@@ -21,6 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7982982112293185"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
+
       <body>{children}</body>
     </html>
   );
