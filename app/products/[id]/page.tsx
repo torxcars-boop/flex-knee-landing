@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   ShoppingCart,
@@ -11,8 +11,9 @@ import {
   Loader2,
   Package,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-
 import { supabase } from "@/lib/supabase";
 import { addToCart, getCart } from "@/lib/cart";
 
@@ -21,45 +22,35 @@ type Product = {
   name: string | null;
   name_ar: string | null;
   name_en: string | null;
-
   description: string | null;
   description_ar: string | null;
   description_en: string | null;
-
   price: number;
   old_price: number | null;
-
   category: string | null;
   category_ar: string | null;
   category_en: string | null;
-
   image_url: string | null;
-
+  images: string[] | null;
   sizes: string[] | null;
   features: string[] | null;
-
   stock: number;
   active: boolean;
 };
 
 export default function ProductPage() {
   const params = useParams();
-
   const id = params?.id as string;
 
   const [product, setProduct] = useState<Product | null>(null);
-
   const [loading, setLoading] = useState(true);
-
   const [quantity, setQuantity] = useState(1);
-
   const [selectedSize, setSelectedSize] = useState<string | undefined>(
     undefined
   );
-
   const [added, setAdded] = useState(false);
-
   const [cartCount, setCartCount] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   /*
    * تحميل المنتج
@@ -92,6 +83,7 @@ export default function ProductPage() {
         const item = data as Product;
 
         setProduct(item);
+        setSelectedImageIndex(0);
 
         /*
          * لو المنتج له مقاسات،
@@ -110,6 +102,55 @@ export default function ProductPage() {
 
     loadProduct();
   }, [id]);
+
+  /*
+   * تجهيز قائمة الصور.
+   *
+   * الأولوية:
+   * 1. images
+   * 2. image_url كصورة احتياطية
+   *
+   * ونزيل الروابط الفارغة والتكرارات.
+   */
+  const productImages = useMemo(() => {
+    if (!product) {
+      return [];
+    }
+
+    const images = Array.isArray(product.images)
+      ? product.images.filter(
+          (image): image is string =>
+            typeof image === "string" && image.trim().length > 0
+        )
+      : [];
+
+    if (images.length > 0) {
+      return Array.from(new Set(images));
+    }
+
+    if (
+      typeof product.image_url === "string" &&
+      product.image_url.trim().length > 0
+    ) {
+      return [product.image_url];
+    }
+
+    return [];
+  }, [product]);
+
+  /*
+   * حماية مؤشر الصورة الحالية
+   */
+  useEffect(() => {
+    if (productImages.length === 0) {
+      setSelectedImageIndex(0);
+      return;
+    }
+
+    if (selectedImageIndex >= productImages.length) {
+      setSelectedImageIndex(0);
+    }
+  }, [productImages.length, selectedImageIndex]);
 
   /*
    * تحديث عدد المنتجات الموجود في السلة
@@ -138,6 +179,34 @@ export default function ProductPage() {
       window.removeEventListener("cart-updated", updateCartCount);
     };
   }, []);
+
+  /*
+   * الصورة الحالية
+   */
+  const currentImage =
+    productImages[selectedImageIndex] || productImages[0] || null;
+
+  /*
+   * الانتقال للصورة التالية
+   */
+  function nextImage() {
+    if (productImages.length <= 1) return;
+
+    setSelectedImageIndex((current) =>
+      current >= productImages.length - 1 ? 0 : current + 1
+    );
+  }
+
+  /*
+   * الانتقال للصورة السابقة
+   */
+  function previousImage() {
+    if (productImages.length <= 1) return;
+
+    setSelectedImageIndex((current) =>
+      current <= 0 ? productImages.length - 1 : current - 1
+    );
+  }
 
   /*
    * إضافة المنتج للسلة
@@ -176,27 +245,18 @@ export default function ProductPage() {
     );
 
     /*
-     * استخدام نفس نظام السلة الموجود في lib/cart.ts
-     *
-     * مهم جدًا:
-     * lib/cart.ts يستخدم flex_cart
-     * وصفحة السلة تقرأ من نفس المكان.
+     * إضافة المنتج للسلة
      */
     addToCart({
       productId: product.id,
-
       name:
         product.name_ar ||
         product.name ||
         product.name_en ||
         "منتج",
-
       price: Number(product.price),
-
-      imageUrl: product.image_url,
-
+      imageUrl: product.image_url || currentImage,
       quantity: safeQuantity,
-
       size: selectedSize,
     });
 
@@ -276,7 +336,6 @@ export default function ProductPage() {
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#b6ff00] px-6 py-3 font-black text-black"
           >
             العودة للمتجر
-
             <ArrowRight size={18} />
           </Link>
         </div>
@@ -342,7 +401,6 @@ export default function ProductPage() {
 
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
         <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-
           {/* Logo / Store */}
 
           <Link
@@ -384,31 +442,104 @@ export default function ProductPage() {
           className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-white/40 transition hover:text-white"
         >
           <ArrowRight size={17} />
-
           العودة للمتجر
         </Link>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
 
-          {/* ================= IMAGE ================= */}
+          {/* ================= IMAGE GALLERY ================= */}
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0a0a0a]">
+          <div className="space-y-4">
 
-            <div className="aspect-square bg-black">
+            {/* Main Image */}
 
-              {product.image_url ? (
-                <img
-                  src={product.image_url}
-                  alt={nameAr}
-                  className="h-full w-full object-contain p-4 sm:p-8"
-                />
-              ) : (
-                <div className="flex h-full items-center justify-center text-white/20">
-                  <Package size={50} />
-                </div>
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0a0a0a]">
+
+              <div className="aspect-square bg-black">
+
+                {currentImage ? (
+                  <img
+                    src={currentImage}
+                    alt={`${nameAr} - صورة ${selectedImageIndex + 1}`}
+                    className="h-full w-full object-contain p-4 sm:p-8"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-white/20">
+                    <Package size={50} />
+                  </div>
+                )}
+
+              </div>
+
+              {/* Previous */}
+
+              {productImages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={previousImage}
+                  aria-label="الصورة السابقة"
+                  className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur transition hover:border-[#b6ff00]/50 hover:bg-black"
+                >
+                  <ChevronRight size={20} />
+                </button>
               )}
 
+              {/* Next */}
+
+              {productImages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={nextImage}
+                  aria-label="الصورة التالية"
+                  className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-white backdrop-blur transition hover:border-[#b6ff00]/50 hover:bg-black"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+              )}
+
+              {/* Image Counter */}
+
+              {productImages.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-4 py-2 text-xs font-bold text-white/70 backdrop-blur">
+                  {selectedImageIndex + 1} / {productImages.length}
+                </div>
+              )}
             </div>
+
+            {/* Thumbnails */}
+
+            {productImages.length > 1 && (
+              <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-6">
+
+                {productImages.map((image, index) => (
+                  <button
+                    key={`${image}-${index}`}
+                    type="button"
+                    onClick={() =>
+                      setSelectedImageIndex(index)
+                    }
+                    aria-label={`عرض الصورة ${index + 1}`}
+                    className={`relative aspect-square overflow-hidden rounded-xl border bg-[#0a0a0a] transition ${
+                      selectedImageIndex === index
+                        ? "border-[#b6ff00] ring-2 ring-[#b6ff00]/20"
+                        : "border-white/10 opacity-70 hover:border-white/30 hover:opacity-100"
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${nameAr} - صورة مصغرة ${index + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+
+                    {selectedImageIndex === index && (
+                      <div className="absolute inset-0 bg-[#b6ff00]/10" />
+                    )}
+                  </button>
+                ))}
+
+              </div>
+            )}
+
           </div>
 
           {/* ================= INFO ================= */}
@@ -582,11 +713,9 @@ export default function ProductPage() {
               }
               className="mt-8 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#b6ff00] px-6 py-5 text-lg font-black text-black transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50"
             >
-
               {added ? (
                 <>
                   <CheckCircle2 size={21} />
-
                   تمت الإضافة إلى السلة ✓
                 </>
               ) : (
@@ -598,7 +727,6 @@ export default function ProductPage() {
                     : "أضف إلى السلة"}
                 </>
               )}
-
             </button>
 
             {/* ================= VIEW CART ================= */}
@@ -656,6 +784,7 @@ export default function ProductPage() {
         </div>
 
       </footer>
+
     </main>
   );
 }
