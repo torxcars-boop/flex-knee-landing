@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -91,7 +92,14 @@ export default function ProductPage() {
          */
         if (item.sizes && item.sizes.length > 0) {
           setSelectedSize(item.sizes[0]);
+        } else {
+          setSelectedSize(undefined);
         }
+
+        /*
+         * عند تغيير المنتج نعيد الكمية إلى 1.
+         */
+        setQuantity(1);
       } catch (error) {
         console.error("PRODUCT ERROR:", error);
         setProduct(null);
@@ -139,18 +147,15 @@ export default function ProductPage() {
   }, [product]);
 
   /*
-   * حماية مؤشر الصورة الحالية
+   * نضمن أن المؤشر الحالي لا يتجاوز عدد الصور.
+   *
+   * لا نحتاج useEffect هنا لأن تغيير المنتج
+   * يعيد selectedImageIndex إلى 0 أثناء تحميله.
    */
-  useEffect(() => {
-    if (productImages.length === 0) {
-      setSelectedImageIndex(0);
-      return;
-    }
-
-    if (selectedImageIndex >= productImages.length) {
-      setSelectedImageIndex(0);
-    }
-  }, [productImages.length, selectedImageIndex]);
+  const safeImageIndex =
+    productImages.length > 0
+      ? Math.min(selectedImageIndex, productImages.length - 1)
+      : 0;
 
   /*
    * تحديث عدد المنتجات الموجود في السلة
@@ -184,7 +189,7 @@ export default function ProductPage() {
    * الصورة الحالية
    */
   const currentImage =
-    productImages[selectedImageIndex] || productImages[0] || null;
+    productImages[safeImageIndex] || productImages[0] || null;
 
   /*
    * الانتقال للصورة التالية
@@ -268,7 +273,7 @@ export default function ProductPage() {
     /*
      * إخفاء رسالة النجاح بعد فترة
      */
-    setTimeout(() => {
+    window.setTimeout(() => {
       setAdded(false);
     }, 2000);
   }
@@ -434,7 +439,6 @@ export default function ProductPage() {
       {/* ================= PRODUCT ================= */}
 
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-16">
-
         {/* Back */}
 
         <Link
@@ -446,21 +450,19 @@ export default function ProductPage() {
         </Link>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-
           {/* ================= IMAGE GALLERY ================= */}
 
           <div className="space-y-4">
-
             {/* Main Image */}
 
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0a0a0a]">
-
               <div className="aspect-square bg-black">
-
                 {currentImage ? (
                   <img
                     src={currentImage}
-                    alt={`${nameAr} - صورة ${selectedImageIndex + 1}`}
+                    alt={`${nameAr} - صورة ${
+                      safeImageIndex + 1
+                    }`}
                     className="h-full w-full object-contain p-4 sm:p-8"
                   />
                 ) : (
@@ -468,7 +470,6 @@ export default function ProductPage() {
                     <Package size={50} />
                   </div>
                 )}
-
               </div>
 
               {/* Previous */}
@@ -501,7 +502,8 @@ export default function ProductPage() {
 
               {productImages.length > 1 && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-4 py-2 text-xs font-bold text-white/70 backdrop-blur">
-                  {selectedImageIndex + 1} / {productImages.length}
+                  {safeImageIndex + 1} /{" "}
+                  {productImages.length}
                 </div>
               )}
             </div>
@@ -510,7 +512,6 @@ export default function ProductPage() {
 
             {productImages.length > 1 && (
               <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-6">
-
                 {productImages.map((image, index) => (
                   <button
                     key={`${image}-${index}`}
@@ -518,34 +519,35 @@ export default function ProductPage() {
                     onClick={() =>
                       setSelectedImageIndex(index)
                     }
-                    aria-label={`عرض الصورة ${index + 1}`}
+                    aria-label={`عرض الصورة ${
+                      index + 1
+                    }`}
                     className={`relative aspect-square overflow-hidden rounded-xl border bg-[#0a0a0a] transition ${
-                      selectedImageIndex === index
+                      safeImageIndex === index
                         ? "border-[#b6ff00] ring-2 ring-[#b6ff00]/20"
                         : "border-white/10 opacity-70 hover:border-white/30 hover:opacity-100"
                     }`}
                   >
                     <img
                       src={image}
-                      alt={`${nameAr} - صورة مصغرة ${index + 1}`}
+                      alt={`${nameAr} - صورة مصغرة ${
+                        index + 1
+                      }`}
                       className="h-full w-full object-cover"
                     />
 
-                    {selectedImageIndex === index && (
+                    {safeImageIndex === index && (
                       <div className="absolute inset-0 bg-[#b6ff00]/10" />
                     )}
                   </button>
                 ))}
-
               </div>
             )}
-
           </div>
 
           {/* ================= INFO ================= */}
 
           <div className="lg:pt-6">
-
             {/* CATEGORY */}
 
             {(categoryAr || categoryEn) && (
@@ -575,7 +577,6 @@ export default function ProductPage() {
 
             {(descriptionAr || descriptionEn) && (
               <div className="mt-8 space-y-4">
-
                 {descriptionAr && (
                   <p className="text-base leading-8 text-white/55">
                     {descriptionAr}
@@ -590,14 +591,12 @@ export default function ProductPage() {
                     {descriptionEn}
                   </p>
                 )}
-
               </div>
             )}
 
             {/* PRICE */}
 
             <div className="mt-8 flex flex-wrap items-end gap-3">
-
               <span className="text-4xl font-black text-[#b6ff00]">
                 {price.toLocaleString("ar-EG")}
               </span>
@@ -606,13 +605,13 @@ export default function ProductPage() {
                 جنيه
               </span>
 
-              {oldPrice &&
+              {oldPrice !== null &&
                 oldPrice > price && (
                   <span className="mb-1 text-lg text-white/25 line-through">
-                    {oldPrice.toLocaleString("ar-EG")} جنيه
+                    {oldPrice.toLocaleString("ar-EG")}{" "}
+                    جنيه
                   </span>
                 )}
-
             </div>
 
             {/* ================= SIZES ================= */}
@@ -620,13 +619,11 @@ export default function ProductPage() {
             {product.sizes &&
               product.sizes.length > 0 && (
                 <div className="mt-9">
-
                   <div className="mb-3 text-sm font-black">
                     اختر المقاس
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-
                     {product.sizes.map((size) => (
                       <button
                         key={size}
@@ -643,7 +640,6 @@ export default function ProductPage() {
                         {size}
                       </button>
                     ))}
-
                   </div>
                 </div>
               )}
@@ -651,13 +647,11 @@ export default function ProductPage() {
             {/* ================= QUANTITY ================= */}
 
             <div className="mt-8">
-
               <div className="mb-3 text-sm font-black">
                 الكمية
               </div>
 
               <div className="flex w-fit items-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
-
                 <button
                   type="button"
                   onClick={decreaseQuantity}
@@ -682,14 +676,12 @@ export default function ProductPage() {
                 >
                   <Plus size={17} />
                 </button>
-
               </div>
             </div>
 
             {/* ================= STOCK ================= */}
 
             <div className="mt-5 text-sm">
-
               {product.stock > 0 ? (
                 <span className="text-[#b6ff00]">
                   متوفر في المخزون
@@ -699,7 +691,6 @@ export default function ProductPage() {
                   غير متوفر حاليًا
                 </span>
               )}
-
             </div>
 
             {/* ================= ADD TO CART ================= */}
@@ -737,7 +728,6 @@ export default function ProductPage() {
             >
               عرض السلة وإتمام الطلب
             </Link>
-
           </div>
         </div>
 
@@ -746,13 +736,11 @@ export default function ProductPage() {
         {product.features &&
           product.features.length > 0 && (
             <section className="mt-16 border-t border-white/10 pt-12">
-
               <h2 className="text-2xl font-black">
                 مميزات المنتج
               </h2>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-
                 {product.features.map(
                   (feature, index) => (
                     <div
@@ -767,24 +755,19 @@ export default function ProductPage() {
                     </div>
                   )
                 )}
-
               </div>
             </section>
           )}
-
       </section>
 
       {/* ================= FOOTER ================= */}
 
       <footer className="border-t border-white/10 py-8">
-
         <div className="mx-auto max-w-7xl px-5 text-center text-xs text-white/25 sm:px-8">
           جميع الحقوق محفوظة ©{" "}
           {new Date().getFullYear()} FLEX
         </div>
-
       </footer>
-
     </main>
   );
 }

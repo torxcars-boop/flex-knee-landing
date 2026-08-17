@@ -39,3 +39,138 @@ img {
   background: #b6ff00;
   color: #050505;
 }
+
+
+
+/* =========================================================
+   PREMIUM PAGE TRANSITIONS
+   ========================================================= */
+
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  background: #050505;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease,
+    transform 460ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-transition--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.page-transition__loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transform: translate(-50%, -50%);
+}
+
+.page-transition__loader span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #b7ff18;
+  animation: page-transition-dot 0.8s infinite ease-in-out;
+}
+
+.page-transition__loader span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.page-transition__loader span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+@keyframes page-transition-dot {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0) scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1);
+  }
+}
+
+/* =========================================================
+   MOTION UTILITIES
+   ========================================================= */
+
+.motion-fade-up {
+  animation: motion-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+.motion-fade-up-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.motion-fade-up-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.motion-fade-up-delay-3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes motion-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   PREMIUM HOVER
+   ========================================================= */
+
+.motion-hover {
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    opacity 300ms ease;
+}
+
+.motion-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition,
+  .page-transition--visible,
+  .motion-fade-up,
+  .motion-hover,
+  .page-transition__loader span {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .page-transition {
+    display: none !important;
+  }
+}

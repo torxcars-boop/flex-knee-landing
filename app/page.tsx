@@ -46,138 +46,128 @@ type AISearchResult = {
 };
 
 const translations = {
-  ar: {
-    store: "المتجر",
-    admin: "لوحة التحكم",
-    cart: "السلة",
 
-    heroLabel: "تسوق بثقة",
-    heroTitle: "منتجات مختارة",
-    heroTitleMuted: "مصممة لتناسب احتياجاتك.",
-    heroDescription:
-      "اكتشف مجموعة المنتجات المتاحة في متجرنا، وتصفح الأقسام والمنتجات واختر ما يناسبك بسهولة.",
 
-    categoriesLabel: "الأقسام",
-    categoriesTitle: "تصفح الأقسام",
+ar: {
+  store: "المتجر",
+  admin: "لوحة التحكم",
+  cart: "السلة",
 
-    productsLabel: "المنتجات",
-    latestProducts: "أحدث المنتجات",
+  heroLabel: "تسوق بثقة",
+  heroTitle: "منتجات مختارة",
+  heroTitleMuted: "مصممة لتناسب احتياجاتك.",
+  heroDescription:
+    "اكتشف مجموعة المنتجات المتاحة في متجرنا، وتصفح الأقسام والمنتجات واختر ما يناسبك بسهولة.",
 
-    productCount: "منتج",
-    categoryCount: "قسم",
+  categoriesLabel: "الأقسام",
+  categoriesTitle: "تصفح الأقسام",
+  productsLabel: "المنتجات",
+  latestProducts: "أحدث المنتجات",
 
-    noCategories: "لا توجد أقسام حاليًا",
-    categoriesError: "تعذر تحميل الأقسام",
+  productCount: "منتج",
+  categoryCount: "قسم",
 
-    noProducts: "لا توجد منتجات حاليًا",
-    noProductsDescription:
-      "ستظهر المنتجات هنا تلقائيًا بمجرد إضافتها من لوحة التحكم.",
+  noCategories: "لا توجد أقسام حاليًا",
+  categoriesError: "تعذر تحميل الأقسام",
 
-    noImage: "لا توجد صورة",
-    details: "التفاصيل",
+  noProducts: "لا توجد منتجات حاليًا",
+  noProductsDescription:
+    "ستظهر المنتجات هنا تلقائيًا بمجرد إضافتها من لوحة التحكم.",
 
-    egp: "جنيه",
-    outOfStock: "غير متوفر",
+  noImage: "لا توجد صورة",
+  details: "التفاصيل",
+  egp: "جنيه",
+  outOfStock: "غير متوفر",
 
-    language: "English",
-    loading: "جاري التحميل...",
-    viewProducts: "عرض المنتجات",
-    allProducts: "كل المنتجات",
+  language: "English",
+  loading: "جاري التحميل...",
+  viewProducts: "عرض المنتجات",
 
-    searchPlaceholder:
-      "اسأل الذكاء الاصطناعي عن المنتج الذي تبحث عنه...",
+  searchPlaceholder:
+    "اسأل الذكاء الاصطناعي عن المنتج الذي تبحث عنه...",
+  searchDescription:
+    "اكتب ما تبحث عنه، ودع الذكاء الاصطناعي يساعدك في العثور على المنتج المناسب.",
+  searchButton: "بحث ذكي",
+  searching: "جاري البحث...",
 
-    searchButton: "بحث ذكي",
-    searching: "جاري البحث...",
-    searchTitle: "ابحث عن المنتج بطريقة ذكية",
-    searchDescription:
-      "اكتب احتياجك أو ميزانيتك وسأبحث لك داخل منتجات المتجر.",
-    searchExample:
-      'مثال: "عايز حاجة للركبة أقل من 500 جنيه"',
-    searchClose: "إغلاق",
+  searchExample:
+    'مثال: "عايز حاجة للركبة أقل من 500 جنيه"',
 
-    searchNoResults:
-      "لم أجد منتجًا مناسبًا لطلبك داخل المتجر.",
+  searchClose: "إغلاق",
 
-    searchError:
-      "تعذر تشغيل البحث الذكي حاليًا. حاول مرة أخرى.",
+  searchNoResults:
+    "لم أجد منتجًا مناسبًا لطلبك داخل المتجر.",
 
-    footer:
-      "جميع الحقوق محفوظة. متجر إلكتروني احترافي متعدد اللغات.",
-  },
+  searchError:
+    "تعذر تشغيل البحث الذكي حاليًا. حاول مرة أخرى.",
 
-  en: {
-    store: "Store",
-    admin: "Admin",
-    cart: "Cart",
+  footer:
+    "جميع الحقوق محفوظة. متجر إلكتروني احترافي متعدد اللغات.",
+},
 
-    heroLabel: "SHOP WITH CONFIDENCE",
-    heroTitle: "Curated products",
-    heroTitleMuted: "made for your needs.",
-    heroDescription:
-      "Explore our categories and products, view details and prices, and choose what works best for you.",
+en: {
+  store: "Store",
+  admin: "Admin",
+  cart: "Cart",
 
-    categoriesLabel: "CATEGORIES",
-    categoriesTitle: "Browse categories",
+  heroLabel: "SHOP WITH CONFIDENCE",
+  heroTitle: "Curated products",
+  heroTitleMuted: "made for your needs.",
+  heroDescription:
+    "Explore our categories and products, view details and prices, and choose what works best for you.",
 
-    productsLabel: "PRODUCTS",
-    latestProducts: "Latest products",
+  categoriesLabel: "CATEGORIES",
+  categoriesTitle: "Browse categories",
+  productsLabel: "PRODUCTS",
+  latestProducts: "Latest products",
 
-    productCount: "products",
-    categoryCount: "categories",
+  productCount: "products",
+  categoryCount: "categories",
 
-    noCategories: "No categories available",
-    categoriesError: "Could not load categories",
+  noCategories: "No categories available",
+  categoriesError: "Could not load categories",
 
-    noProducts: "No products available",
-    noProductsDescription:
-      "Products will appear here automatically once they are added from the admin dashboard.",
+  noProducts: "No products available",
+  noProductsDescription:
+    "Products will appear here automatically once they are added from the admin dashboard.",
 
-    noImage: "No image",
-    details: "View details",
+  noImage: "No image",
+  details: "View details",
+  egp: "EGP",
+  outOfStock: "Out of stock",
 
-    egp: "EGP",
-    outOfStock: "Out of stock",
+  language: "العربية",
+  loading: "Loading...",
+  viewProducts: "View products",
 
-    language: "العربية",
-    loading: "Loading...",
-    viewProducts: "View products",
-    allProducts: "All products",
+  searchPlaceholder:
+    "Ask AI about the product you are looking for...",
+  searchDescription:
+    "Describe what you need and let AI help you find the right product.",
+  searchButton: "Smart Search",
+  searching: "Searching...",
 
-    searchPlaceholder:
-      "Ask AI about the product you are looking for...",
+  searchExample:
+    'Example: "I need something for my knee under 500 EGP"',
 
-    searchButton: "Smart Search",
-    searching: "Searching...",
-    searchTitle: "Find products intelligently",
-    searchDescription:
-      "Describe what you need or your budget and I'll search the store catalog.",
-    searchExample:
-      'Example: "I need something for my knee under 500 EGP"',
-    searchClose: "Close",
+  searchClose: "Close",
 
-    searchNoResults:
-      "I couldn't find a suitable product in the store.",
+  searchNoResults:
+    "I couldn't find a suitable product in the store.",
 
-    searchError:
-      "Smart search is temporarily unavailable. Please try again.",
+  searchError:
+    "Smart search is temporarily unavailable. Please try again.",
 
-    footer:
-      "All rights reserved. A professional multilingual online store.",
-  },
+  footer:
+    "All rights reserved. A professional multilingual online store.",
+},
+
+ 
+
 };
 
 export default function HomePage() {
-  /*
-   * مهم جدًا:
-   *
-   * اللغة تبدأ دائمًا بـ ar أثناء أول render.
-   * بعد hydration نقرأ localStorage.
-   *
-   * بهذه الطريقة لا يحدث اختلاف بين HTML السيرفر
-   * وHTML أول render على العميل.
-   */
-  const [language, setLanguage] = useState<Language>("ar");
+const [language, setLanguage] = useState<Language>("ar");
 
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -191,23 +181,14 @@ export default function HomePage() {
   const [categoriesError, setCategoriesError] =
     useState(false);
 
-  /*
-   * AI SEARCH
-   *
-   * مهم:
-   * يبدأ false دائمًا.
-   * لا نستخدم window/localStorage هنا.
-   * هذا يمنع hydration mismatch.
-   */
-  const [aiSearching, setAiSearching] = useState(false);
+  const [aiSearching, setAiSearching] =
+    useState(false);
 
   const [aiQuery, setAiQuery] = useState("");
 
   const [aiAnswer, setAiAnswer] = useState("");
 
-  const [aiResults, setAiResults] = useState<string[]>(
-    []
-  );
+  const [aiResults, setAiResults] = useState<string[]>([]);
 
   const [aiError, setAiError] = useState("");
 
@@ -218,24 +199,20 @@ export default function HomePage() {
 
   const isArabic = language === "ar";
 
-  /*
-   * بعد تركيب الصفحة نقرأ اللغة المحفوظة.
-   */
-  useEffect(() => {
-    const savedLanguage =
-      window.localStorage.getItem("store-language");
+useEffect(() => {
+  const savedLanguage =
+    window.localStorage.getItem("store-language");
 
-    if (
-      savedLanguage === "ar" ||
-      savedLanguage === "en"
-    ) {
+  if (
+    savedLanguage === "ar" ||
+    savedLanguage === "en"
+  ) {
+    window.setTimeout(() => {
       setLanguage(savedLanguage);
-    }
-  }, []);
+    }, 0);
+  }
+}, []);
 
-  /*
-   * تحميل الأقسام.
-   */
   async function loadCategories() {
     setCategoriesLoading(true);
     setCategoriesError(false);
@@ -250,12 +227,7 @@ export default function HomePage() {
       });
 
     if (error) {
-      console.error("Categories error:", {
-        message: error.message,
-        details: error.details,
-        hint: error.hint,
-        code: error.code,
-      });
+      console.error("Categories error:", error);
 
       setCategories([]);
       setCategoriesError(true);
@@ -268,9 +240,6 @@ export default function HomePage() {
     setCategoriesLoading(false);
   }
 
-  /*
-   * تحميل المنتجات.
-   */
   async function loadProducts() {
     setProductsLoading(true);
 
@@ -285,13 +254,7 @@ export default function HomePage() {
       });
 
     if (error) {
-      console.error("Products error:", {
-        message: error.message,
-        details: error.details,
-        hint: error.hint,
-        code: error.code,
-      });
-
+      console.error("Products error:", error);
       setProducts([]);
     } else {
       setProducts(
@@ -302,9 +265,6 @@ export default function HomePage() {
     setProductsLoading(false);
   }
 
-  /*
-   * تحميل البيانات.
-   */
   useEffect(() => {
     const timer = window.setTimeout(() => {
       void loadCategories();
@@ -316,9 +276,6 @@ export default function HomePage() {
     };
   }, []);
 
-  /*
-   * تغيير اللغة.
-   */
   function changeLanguage() {
     const nextLanguage: Language =
       language === "ar" ? "en" : "ar";
@@ -331,9 +288,6 @@ export default function HomePage() {
     );
   }
 
-  /*
-   * اسم القسم.
-   */
   function getCategoryName(
     categoryId: string | null,
     fallback: string | null
@@ -355,9 +309,6 @@ export default function HomePage() {
       : category.name_en;
   }
 
-  /*
-   * وصف القسم.
-   */
   function getCategoryDescription(
     category: Category
   ) {
@@ -366,9 +317,6 @@ export default function HomePage() {
       : category.description_en;
   }
 
-  /*
-   * فتح AI Search.
-   */
   function openAISearch() {
     setAiError("");
     setAiAnswer("");
@@ -376,9 +324,6 @@ export default function HomePage() {
     setShowAISearch(true);
   }
 
-  /*
-   * إغلاق AI Search.
-   */
   function closeAISearch() {
     if (aiSearching) {
       return;
@@ -387,9 +332,6 @@ export default function HomePage() {
     setShowAISearch(false);
   }
 
-  /*
-   * تنفيذ AI Search.
-   */
   async function runAISearch() {
     const query = aiQuery.trim();
 
@@ -444,6 +386,7 @@ export default function HomePage() {
           : "";
 
       setAiResults(productIds);
+
       setAiAnswer(
         answer || t.searchNoResults
       );
@@ -461,12 +404,6 @@ export default function HomePage() {
     }
   }
 
-  /*
-   * المنتجات التي وجدها AI.
-   *
-   * نعيد ترتيب المنتجات طبقًا للـ IDs
-   * التي رجعها الذكاء الاصطناعي.
-   */
   const aiProducts = aiResults
     .map((id) =>
       products.find(
@@ -479,772 +416,1189 @@ export default function HomePage() {
     );
 
   return (
-    <main
-      dir={isArabic ? "rtl" : "ltr"}
-      lang={language}
-      className="min-h-screen bg-[#050505] text-white"
-    >
-      {/* HEADER */}
+    <>
+      <main
+        dir={isArabic ? "rtl" : "ltr"}
+        lang={language}
+        className="min-h-screen overflow-hidden bg-[#050505] text-white"
+      >
+        {/* BACKGROUND */}
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <div className="absolute left-1/2 top-[-300px] h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-[#b6ff00]/10 blur-[170px] animate-pulse-slow" />
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/85 backdrop-blur-2xl">
-        <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between px-4 sm:px-8">
-          <Link
-            href="/"
-            className="group flex items-center gap-3"
-          >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#b6ff00] text-xl font-black text-black transition group-hover:scale-105">
-              F
-            </div>
+          <div className="absolute bottom-[-300px] right-[-150px] h-[500px] w-[500px] rounded-full bg-[#b6ff00]/[0.04] blur-[140px] animate-float-slow" />
 
-            <div>
-              <div className="text-lg font-black tracking-tight">
-                {t.store}
-              </div>
+          <div className="absolute left-[-200px] top-[45%] h-[350px] w-[350px] rounded-full bg-white/[0.025] blur-[130px] animate-float-reverse" />
 
-              <div className="text-[10px] font-medium text-white/30">
-                PREMIUM STORE
-              </div>
-            </div>
-          </Link>
-
-          <div className="flex items-center gap-2">
-            {/* LANGUAGE */}
-
-            <button
-              type="button"
-              onClick={changeLanguage}
-              className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs font-bold text-white/60 transition hover:border-white/20 hover:text-white"
-            >
-              <Globe2 size={16} />
-
-              <span className="hidden sm:inline">
-                {t.language}
-              </span>
-            </button>
-
-            {/* ADMIN */}
-
-            <Link
-              href="/admin"
-              className="hidden rounded-xl border border-white/10 px-4 py-2.5 text-xs font-bold text-white/50 transition hover:border-white/20 hover:text-white sm:block"
-            >
-              {t.admin}
-            </Link>
-
-            {/* CART */}
-
-            <Link
-              href="/cart"
-              className="flex items-center gap-2 rounded-xl bg-[#b6ff00] px-3 py-2.5 text-sm font-black text-black transition hover:scale-105 sm:px-4"
-            >
-              <ShoppingCart size={17} />
-
-              <span>{t.cart}</span>
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      {/* HERO */}
-
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-[-200px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#b6ff00]/10 blur-[150px]" />
-
-          <div className="absolute bottom-[-250px] right-[-100px] h-[400px] w-[400px] rounded-full bg-white/[0.03] blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#050505_75%)]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-20 sm:px-8 sm:pb-28 sm:pt-28">
-          <div className="max-w-4xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-[#b6ff00]" />
+        {/* HEADER */}
+        <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/80 backdrop-blur-2xl animate-header">
+          <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between px-4 sm:px-8">
+            <Link
+              href="/"
+              className="group flex items-center gap-3"
+            >
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-[#b6ff00] text-xl font-black text-black transition duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span className="relative z-10">
+                  F
+                </span>
 
-              <span className="text-xs font-black tracking-[0.2em] text-[#b6ff00]">
-                {t.heroLabel}
-              </span>
-            </div>
+                <span className="absolute inset-0 rounded-xl bg-[#b6ff00] opacity-40 blur-md transition group-hover:opacity-70" />
+              </div>
 
-            <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl">
-              {t.heroTitle}
+              <div>
+                <div className="text-lg font-black tracking-tight">
+                  {t.store}
+                </div>
 
-              <br />
-
-              <span className="text-white/30">
-                {t.heroTitleMuted}
-              </span>
-            </h1>
-
-            <p className="mt-7 max-w-2xl text-sm leading-8 text-white/45 sm:text-lg sm:leading-9">
-              {t.heroDescription}
-            </p>
-
-            {/* AI SEARCH */}
-
-            <div className="mt-10 max-w-3xl">
-              <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-2 shadow-2xl backdrop-blur-xl">
-                <div className="flex flex-col gap-2 sm:flex-row">
-                  <div className="relative flex-1">
-                    <Search
-                      size={19}
-                      className={`pointer-events-none absolute top-1/2 -translate-y-1/2 text-white/30 ${
-                        isArabic
-                          ? "right-4"
-                          : "left-4"
-                      }`}
-                    />
-
-                    <input
-                      type="text"
-                      value={aiQuery}
-                      onChange={(event) =>
-                        setAiQuery(
-                          event.target.value
-                        )
-                      }
-                      onKeyDown={(event) => {
-                        if (
-                          event.key === "Enter"
-                        ) {
-                          void runAISearch();
-                        }
-                      }}
-                      placeholder={
-                        t.searchPlaceholder
-                      }
-                      className={`h-[58px] w-full rounded-[1.4rem] border border-white/10 bg-black/30 text-sm text-white outline-none placeholder:text-white/25 focus:border-[#b6ff00]/40 ${
-                        isArabic
-                          ? "pr-12 pl-4"
-                          : "pl-12 pr-4"
-                      }`}
-                    />
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      void runAISearch()
-                    }
-                    disabled={aiSearching}
-                    className="inline-flex min-h-[58px] items-center justify-center gap-2 rounded-[1.4rem] bg-[#b6ff00] px-6 text-sm font-black text-black transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {aiSearching ? (
-                      <Loader2
-                        size={18}
-                        className="animate-spin"
-                      />
-                    ) : (
-                      <Sparkles size={18} />
-                    )}
-
-                    <span>
-                      {aiSearching
-                        ? t.searching
-                        : t.searchButton}
-                    </span>
-                  </button>
+                <div className="text-[10px] font-medium tracking-[0.15em] text-white/30">
+                  PREMIUM STORE
                 </div>
               </div>
+            </Link>
 
-              <div className="mt-3 flex items-center gap-2 px-2 text-xs text-white/25">
-                <Sparkles
-                  size={13}
-                  className="text-[#b6ff00]"
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={changeLanguage}
+                className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs font-bold text-white/60 transition duration-300 hover:border-[#b6ff00]/30 hover:bg-[#b6ff00]/5 hover:text-white"
+              >
+                <Globe2 size={16} />
+
+                <span className="hidden sm:inline">
+                  {t.language}
+                </span>
+              </button>
+
+              <Link
+                href="/admin"
+                className="hidden rounded-xl border border-white/10 px-4 py-2.5 text-xs font-bold text-white/50 transition duration-300 hover:border-[#b6ff00]/30 hover:text-white sm:block"
+              >
+                {t.admin}
+              </Link>
+
+              <Link
+                href="/cart"
+                className="group relative flex items-center gap-2 rounded-xl bg-[#b6ff00] px-3 py-2.5 text-sm font-black text-black transition duration-300 hover:scale-105 sm:px-4"
+              >
+                <ShoppingCart
+                  size={17}
+                  className="transition group-hover:rotate-[-8deg]"
                 />
 
-                <span>
-                  {t.searchExample}
+                <span>{t.cart}</span>
+
+                <span className="absolute inset-0 rounded-xl bg-[#b6ff00] opacity-0 blur-md transition group-hover:opacity-40" />
+              </Link>
+            </div>
+          </div>
+        </header>
+
+        {/* HERO */}
+        <section className="relative z-10 overflow-hidden">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-1/2 top-[-200px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#b6ff00]/10 blur-[150px] animate-hero-glow" />
+
+            <div className="absolute bottom-[-250px] right-[-100px] h-[400px] w-[400px] rounded-full bg-white/[0.03] blur-[120px]" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-20 sm:px-8 sm:pb-28 sm:pt-28">
+            <div className="max-w-4xl">
+              {/* LABEL */}
+              <div className="mb-5 flex items-center gap-3 animate-fade-up animation-delay-100">
+                <span className="h-px w-8 bg-[#b6ff00] animate-line-grow" />
+
+                <span className="text-xs font-black tracking-[0.2em] text-[#b6ff00]">
+                  {t.heroLabel}
                 </span>
               </div>
-            </div>
 
-            {/* HERO BUTTONS */}
+              {/* TITLE */}
+              <h1 className="animate-fade-up animation-delay-200 text-5xl font-black leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl">
+                {t.heroTitle}
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="#categories"
-                className="inline-flex items-center gap-3 rounded-2xl bg-[#b6ff00] px-6 py-4 text-sm font-black text-black transition hover:scale-[1.02]"
-              >
-                {t.categoriesTitle}
+                <br />
 
-                {isArabic ? (
-                  <ArrowLeft size={18} />
-                ) : (
-                  <ArrowRight size={18} />
-                )}
-              </Link>
+                <span className="text-white/30">
+                  {t.heroTitleMuted}
+                </span>
+              </h1>
 
-              <Link
-                href="#products"
-                className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-4 text-sm font-black text-white transition hover:border-white/20"
-              >
-                {t.latestProducts}
-              </Link>
-            </div>
+              {/* DESCRIPTION */}
+              <p className="mt-7 max-w-2xl animate-fade-up animation-delay-300 text-sm leading-8 text-white/45 sm:text-lg sm:leading-9">
+                {t.heroDescription}
+              </p>
 
-            {/* AI RESPONSE */}
+              {/* AI SEARCH */}
+              <div className="mt-10 max-w-3xl animate-fade-up animation-delay-400">
+                <div className="group relative rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-2 shadow-2xl backdrop-blur-xl transition duration-500 hover:border-[#b6ff00]/20">
+                  <div className="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-r from-[#b6ff00]/0 via-[#b6ff00]/10 to-[#b6ff00]/0 opacity-0 blur-sm transition duration-500 group-hover:opacity-100" />
 
-            {(aiAnswer ||
-              aiError ||
-              aiSearching) && (
-              <div className="mt-6 max-w-3xl">
-                <div className="rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] p-5">
-                  {aiSearching && (
-                    <div className="flex items-center gap-3 text-sm text-white/50">
-                      <Loader2
-                        size={18}
-                        className="animate-spin text-[#b6ff00]"
+                  <div className="relative flex flex-col gap-2 sm:flex-row">
+                    <div className="relative flex-1">
+                      <Search
+                        size={19}
+                        className={`pointer-events-none absolute top-1/2 -translate-y-1/2 text-white/30 ${
+                          isArabic
+                            ? "right-4"
+                            : "left-4"
+                        }`}
                       />
 
-                      <span>
-                        {t.searching}
-                      </span>
+                      <input
+                        type="text"
+                        value={aiQuery}
+                        onChange={(event) =>
+                          setAiQuery(
+                            event.target.value
+                          )
+                        }
+                        onKeyDown={(event) => {
+                          if (
+                            event.key ===
+                            "Enter"
+                          ) {
+                            void runAISearch();
+                          }
+                        }}
+                        placeholder={
+                          t.searchPlaceholder
+                        }
+                        className={`h-[58px] w-full rounded-[1.4rem] border border-white/10 bg-black/30 text-sm text-white outline-none transition focus:border-[#b6ff00]/40 ${
+                          isArabic
+                            ? "pr-12 pl-4"
+                            : "pl-12 pr-4"
+                        }`}
+                      />
                     </div>
-                  )}
 
-                  {!aiSearching &&
-                    aiError && (
-                      <div className="text-sm font-bold text-red-300">
-                        {aiError}
-                      </div>
-                    )}
-
-                  {!aiSearching &&
-                    !aiError &&
-                    aiAnswer && (
-                      <div>
-                        <div className="mb-2 flex items-center gap-2">
-                          <Sparkles
-                            size={16}
-                            className="text-[#b6ff00]"
+                    <button
+                      type="button"
+                      onClick={() =>
+                        void runAISearch()
+                      }
+                      disabled={
+                        aiSearching ||
+                        !aiQuery.trim()
+                      }
+                      className="relative inline-flex min-h-[58px] items-center justify-center gap-2 overflow-hidden rounded-[1.4rem] bg-[#b6ff00] px-6 text-sm font-black text-black transition duration-300 hover:scale-[1.01] hover:shadow-[0_0_35px_rgba(182,255,0,0.2)] disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <span className="relative z-10 flex items-center gap-2">
+                        {aiSearching ? (
+                          <Loader2
+                            size={18}
+                            className="animate-spin"
                           />
+                        ) : (
+                          <Sparkles
+                            size={18}
+                          />
+                        )}
 
-                          <span className="text-xs font-black uppercase tracking-wider text-[#b6ff00]">
-                            AI Search
-                          </span>
-                        </div>
+                        <span>
+                          {aiSearching
+                            ? t.searching
+                            : t.searchButton}
+                        </span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
 
-                        <p className="text-sm leading-7 text-white/65">
-                          {aiAnswer}
-                        </p>
-                      </div>
-                    )}
+                <div className="mt-3 flex items-center gap-2 px-2 text-xs text-white/25">
+                  <Sparkles
+                    size={13}
+                    className="text-[#b6ff00]"
+                  />
+
+                  <span>
+                    {t.searchExample}
+                  </span>
                 </div>
               </div>
-            )}
-          </div>
-        </div>
-      </section>
 
-      {/* AI RESULTS */}
+              {/* HERO BUTTONS */}
+              <div className="mt-7 flex flex-wrap gap-3 animate-fade-up animation-delay-500">
+                <Link
+                  href="#categories"
+                  className="group inline-flex items-center gap-3 rounded-2xl bg-[#b6ff00] px-6 py-4 text-sm font-black text-black transition duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(182,255,0,0.15)]"
+                >
+                  {t.categoriesTitle}
 
-      {aiResults.length > 0 && (
-        <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-          <div className="mb-8 flex items-end justify-between gap-4">
-            <div>
-              <div className="mb-2 text-[11px] font-black tracking-[0.2em] text-[#b6ff00]">
-                AI RESULTS
+                  {isArabic ? (
+                    <ArrowLeft
+                      size={18}
+                      className="transition group-hover:-translate-x-1"
+                    />
+                  ) : (
+                    <ArrowRight
+                      size={18}
+                      className="transition group-hover:translate-x-1"
+                    />
+                  )}
+                </Link>
+
+                <Link
+                  href="#products"
+                  className="group inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-4 text-sm font-black text-white transition duration-300 hover:-translate-y-1 hover:border-[#b6ff00]/30"
+                >
+                  {t.latestProducts}
+                </Link>
               </div>
 
-              <h2 className="text-3xl font-black sm:text-4xl">
-                {isArabic
-                  ? "المنتجات المناسبة لك"
-                  : "Products matched for you"}
-              </h2>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => {
-                setAiResults([]);
-                setAiAnswer("");
-                setAiQuery("");
-              }}
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-white/40 transition hover:border-white/20 hover:text-white"
-              aria-label={t.searchClose}
-            >
-              <X size={17} />
-            </button>
-          </div>
-
-          {aiProducts.length === 0 ? (
-            <div className="rounded-[2rem] border border-dashed border-white/10 bg-[#0a0a0a] px-6 py-20 text-center">
-              <Package
-                size={38}
-                className="mx-auto text-white/20"
-              />
-
-              <h3 className="mt-5 text-xl font-black">
-                {t.searchNoResults}
-              </h3>
-            </div>
-          ) : (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {aiProducts.map((product) => {
-                const outOfStock =
-                  product.stock <= 0;
-
-                const categoryName =
-                  getCategoryName(
-                    product.category_id,
-                    product.category
-                  );
-
-                return (
-                  <Link
-                    key={product.id}
-                    href={`/products/${product.id}`}
-                    className="group overflow-hidden rounded-[1.75rem] border border-[#b6ff00]/20 bg-[#0a0a0a] transition duration-300 hover:-translate-y-1 hover:border-[#b6ff00]/50 hover:shadow-2xl"
-                  >
-                    <div className="relative aspect-square overflow-hidden bg-[#080808]">
-                      {product.image_url ? (
-                        <img
-                          src={
-                            product.image_url
-                          }
-                          alt={
-                            product.name
-                          }
-                          loading="lazy"
-                          className="h-full w-full object-contain p-4 transition duration-700 group-hover:scale-105"
+              {/* AI RESPONSE */}
+              {(aiAnswer ||
+                aiError ||
+                aiSearching) && (
+                <div className="mt-6 max-w-3xl animate-fade-up">
+                  <div className="rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] p-5">
+                    {aiSearching && (
+                      <div className="flex items-center gap-3 text-sm text-white/50">
+                        <Loader2
+                          size={18}
+                          className="animate-spin text-[#b6ff00]"
                         />
-                      ) : (
-                        <div className="flex h-full items-center justify-center">
-                          <Package
-                            size={32}
-                            className="text-white/20"
-                          />
+
+                        <span>
+                          {t.searching}
+                        </span>
+                      </div>
+                    )}
+
+                    {!aiSearching &&
+                      aiError && (
+                        <div className="text-sm font-bold text-red-300">
+                          {aiError}
                         </div>
                       )}
 
-                      {outOfStock && (
-                        <div className="absolute inset-x-4 top-4">
-                          <span className="inline-flex rounded-full bg-black/70 px-3 py-1.5 text-[10px] font-bold text-white/60 backdrop-blur">
-                            {t.outOfStock}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="p-5 sm:p-6">
-                      {categoryName && (
-                        <div className="text-[11px] font-black tracking-wide text-[#b6ff00]">
-                          {categoryName}
-                        </div>
-                      )}
-
-                      <h3 className="mt-2 line-clamp-1 text-xl font-black">
-                        {product.name}
-                      </h3>
-
-                      {product.description && (
-                        <p className="mt-2 line-clamp-2 min-h-[48px] text-sm leading-6 text-white/35">
-                          {
-                            product.description
-                          }
-                        </p>
-                      )}
-
-                      <div className="mt-5 flex items-end justify-between gap-3">
+                    {!aiSearching &&
+                      !aiError &&
+                      aiAnswer && (
                         <div>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-2xl font-black text-[#b6ff00]">
-                              {Number(
-                                product.price
-                              ).toLocaleString(
-                                isArabic
-                                  ? "ar-EG"
-                                  : "en-EG"
-                              )}
-                            </span>
+                          <div className="mb-2 flex items-center gap-2">
+                            <Sparkles
+                              size={16}
+                              className="text-[#b6ff00]"
+                            />
 
-                            <span className="text-[11px] font-bold text-white/30">
-                              {t.egp}
+                            <span className="text-xs font-black uppercase tracking-wider text-[#b6ff00]">
+                              AI Search
                             </span>
                           </div>
 
-                          {product.old_price &&
-                            product.old_price >
-                              product.price && (
-                              <span className="text-xs text-white/25 line-through">
-                                {Number(
-                                  product.old_price
-                                ).toLocaleString(
-                                  isArabic
-                                    ? "ar-EG"
-                                    : "en-EG"
-                                )}{" "}
-                                {t.egp}
-                              </span>
-                            )}
+                          <p className="text-sm leading-7 text-white/65">
+                            {aiAnswer}
+                          </p>
                         </div>
+                      )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
 
-                        <span className="flex items-center gap-1.5 text-xs font-black text-white/35 transition group-hover:text-white">
-                          {t.details}
+        {/* AI RESULTS */}
+        {aiResults.length > 0 && (
+          <section className="relative z-10 mx-auto max-w-7xl px-5 pb-24 sm:px-8 animate-fade-up">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <div className="mb-2 text-[11px] font-black tracking-[0.2em] text-[#b6ff00]">
+                  AI RESULTS
+                </div>
+
+                <h2 className="text-3xl font-black sm:text-4xl">
+                  {isArabic
+                    ? "المنتجات المناسبة لك"
+                    : "Products matched for you"}
+                </h2>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setAiResults([]);
+                  setAiAnswer("");
+                  setAiQuery("");
+                }}
+                className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-white/40 transition hover:border-[#b6ff00]/30 hover:text-white"
+                aria-label={t.searchClose}
+              >
+                <X size={17} />
+              </button>
+            </div>
+
+            {aiProducts.length === 0 ? (
+              <div className="rounded-[2rem] border border-dashed border-white/10 bg-[#0a0a0a] px-6 py-20 text-center">
+                <Package
+                  size={38}
+                  className="mx-auto text-white/20"
+                />
+
+                <h3 className="mt-5 text-xl font-black">
+                  {t.searchNoResults}
+                </h3>
+              </div>
+            ) : (
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {aiProducts.map(
+                  (product, index) => {
+                    const outOfStock =
+                      product.stock <= 0;
+
+                    const categoryName =
+                      getCategoryName(
+                        product.category_id,
+                        product.category
+                      );
+
+                    return (
+                      <Link
+                        key={product.id}
+                        href={`/products/${product.id}`}
+                        style={{
+                          animationDelay: `${index * 100}ms`,
+                        }}
+                        className="group animate-card-in overflow-hidden rounded-[1.75rem] border border-[#b6ff00]/20 bg-[#0a0a0a] transition duration-500 hover:-translate-y-2 hover:border-[#b6ff00]/50 hover:shadow-[0_20px_60px_rgba(182,255,0,0.08)]"
+                      >
+                        <ProductCardImage
+                          product={product}
+                          outOfStock={outOfStock}
+                          noImage={t.noImage}
+                          outOfStockText={
+                            t.outOfStock
+                          }
+                        />
+
+                        <div className="p-5 sm:p-6">
+                          {categoryName && (
+                            <div className="text-[11px] font-black tracking-wide text-[#b6ff00]">
+                              {categoryName}
+                            </div>
+                          )}
+
+                          <h3 className="mt-2 line-clamp-1 text-xl font-black">
+                            {product.name}
+                          </h3>
+
+                          {product.description && (
+                            <p className="mt-2 line-clamp-2 min-h-[48px] text-sm leading-6 text-white/35">
+                              {product.description}
+                            </p>
+                          )}
+
+                          <ProductPrice
+                            product={product}
+                            isArabic={isArabic}
+                            currency={t.egp}
+                            details={t.details}
+                            arrow={
+                              isArabic ? (
+                                <ArrowLeft size={14} />
+                              ) : (
+                                <ArrowRight size={14} />
+                              )
+                            }
+                          />
+                        </div>
+                      </Link>
+                    );
+                  }
+                )}
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* CATEGORIES */}
+        <section
+          id="categories"
+          className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8"
+        >
+          <SectionHeading
+            label={t.categoriesLabel}
+            title={t.categoriesTitle}
+            count={categories.length}
+            countText={t.categoryCount}
+          />
+
+          {categoriesLoading ? (
+            <LoadingBox text={t.loading} />
+          ) : categoriesError ? (
+            <div className="rounded-[2rem] border border-red-500/30 bg-red-500/[0.04] px-6 py-20 text-center">
+              <FolderOpen
+                size={40}
+                className="mx-auto text-red-400"
+              />
+
+              <h3 className="mt-5 text-xl font-black text-red-300">
+                {t.categoriesError}
+              </h3>
+
+              <p className="mt-3 text-sm text-white/30">
+                {isArabic
+                  ? "افتح Console في المتصفح لمعرفة سبب الخطأ."
+                  : "Open the browser console to see the exact database error."}
+              </p>
+            </div>
+          ) : categories.length === 0 ? (
+            <EmptyBox
+              icon={
+                <FolderOpen
+                  size={40}
+                  className="mx-auto text-white/20"
+                />
+              }
+              title={t.noCategories}
+            />
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {categories.map(
+                (category, index) => {
+                  const description =
+                    getCategoryDescription(
+                      category
+                    );
+
+                  return (
+                    <Link
+                      key={category.id}
+                      href={`/category/${category.slug}`}
+                      style={{
+                        animationDelay: `${index * 90}ms`,
+                      }}
+                      className="group animate-card-in overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] transition duration-500 hover:-translate-y-2 hover:border-[#b6ff00]/40 hover:shadow-[0_20px_60px_rgba(182,255,0,0.06)]"
+                    >
+                      <div className="relative aspect-[1.25] overflow-hidden bg-[#080808]">
+                        {category.image_url ? (
+                          <img
+                            src={
+                              category.image_url
+                            }
+                            alt={
+                              isArabic
+                                ? category.name_ar
+                                : category.name_en
+                            }
+                            loading="lazy"
+                            className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center">
+                            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#b6ff00]/10">
+                              <FolderOpen
+                                size={30}
+                                className="text-[#b6ff00]"
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <span className="inline-flex rounded-full border border-[#b6ff00]/20 bg-black/60 px-3 py-1.5 text-[10px] font-black text-[#b6ff00] backdrop-blur">
+                            {t.viewProducts}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="p-5">
+                        <h3 className="text-xl font-black transition group-hover:text-[#b6ff00]">
+                          {isArabic
+                            ? category.name_ar
+                            : category.name_en}
+                        </h3>
+
+                        {description && (
+                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/35">
+                            {description}
+                          </p>
+                        )}
+
+                        <div className="mt-5 flex items-center justify-between">
+                          <span className="text-xs text-white/25">
+                            #{category.slug}
+                          </span>
 
                           {isArabic ? (
                             <ArrowLeft
-                              size={14}
+                              size={17}
+                              className="text-[#b6ff00] transition group-hover:-translate-x-1"
                             />
                           ) : (
                             <ArrowRight
-                              size={14}
+                              size={17}
+                              className="text-[#b6ff00] transition group-hover:translate-x-1"
                             />
                           )}
-                        </span>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                );
-              })}
+                    </Link>
+                  );
+                }
+              )}
             </div>
           )}
         </section>
+
+        {/* PRODUCTS */}
+        <section
+          id="products"
+          className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8"
+        >
+          <SectionHeading
+            label={t.productsLabel}
+            title={t.latestProducts}
+            count={products.length}
+            countText={t.productCount}
+          />
+
+          {productsLoading ? (
+            <LoadingBox text={t.loading} />
+          ) : products.length === 0 ? (
+            <EmptyBox
+              icon={
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.04]">
+                  <Package
+                    size={32}
+                    className="text-white/20"
+                  />
+                </div>
+              }
+              title={t.noProducts}
+              description={
+                t.noProductsDescription
+              }
+            />
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map(
+                (product, index) => {
+                  const outOfStock =
+                    product.stock <= 0;
+
+                  const categoryName =
+                    getCategoryName(
+                      product.category_id,
+                      product.category
+                    );
+
+                  return (
+                    <Link
+                      key={product.id}
+                      href={`/products/${product.id}`}
+                      style={{
+                        animationDelay: `${index * 90}ms`,
+                      }}
+                      className="group animate-card-in overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] transition duration-500 hover:-translate-y-2 hover:border-[#b6ff00]/40 hover:shadow-[0_20px_60px_rgba(182,255,0,0.06)]"
+                    >
+                      <ProductCardImage
+                        product={product}
+                        outOfStock={outOfStock}
+                        noImage={t.noImage}
+                        outOfStockText={
+                          t.outOfStock
+                        }
+                      />
+
+                      <div className="p-5 sm:p-6">
+                        {categoryName && (
+                          <div className="text-[11px] font-black tracking-wide text-[#b6ff00]">
+                            {categoryName}
+                          </div>
+                        )}
+
+                        <h3 className="mt-2 line-clamp-1 text-xl font-black">
+                          {product.name}
+                        </h3>
+
+                        {product.description && (
+                          <p className="mt-2 line-clamp-2 min-h-[48px] text-sm leading-6 text-white/35">
+                            {product.description}
+                          </p>
+                        )}
+
+                        <ProductPrice
+                          product={product}
+                          isArabic={isArabic}
+                          currency={t.egp}
+                          details={t.details}
+                          arrow={
+                            isArabic ? (
+                              <ArrowLeft
+                                size={14}
+                              />
+                            ) : (
+                              <ArrowRight
+                                size={14}
+                              />
+                            )
+                          }
+                        />
+                      </div>
+                    </Link>
+                  );
+                }
+              )}
+            </div>
+          )}
+        </section>
+
+        {/* FOOTER */}
+        <footer className="relative z-10 border-t border-white/10">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-8 text-center sm:flex-row sm:px-8 sm:text-right">
+            <div className="text-xs text-white/25">
+              © {new Date().getFullYear()} —{" "}
+              {t.footer}
+            </div>
+
+            <div className="text-xs font-bold text-white/20">
+              {isArabic
+                ? "العربية / English"
+                : "English / العربية"}
+            </div>
+          </div>
+        </footer>
+      </main>
+
+      {/* AI SEARCH FLOATING BUTTON */}
+      {!showAISearch && (
+        <button
+          type="button"
+          onClick={openAISearch}
+          className="fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-2xl bg-[#b6ff00] text-black shadow-[0_10px_40px_rgba(182,255,0,0.2)] transition duration-300 hover:scale-110 sm:bottom-7 sm:right-7"
+          aria-label="AI Search"
+        >
+          <Sparkles
+            size={23}
+            className="animate-sparkle"
+          />
+        </button>
       )}
 
-      {/* CATEGORIES */}
+      {/* AI SEARCH MODAL */}
+      {showAISearch && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-md animate-modal-bg">
+          <div className="relative w-full max-w-2xl animate-modal-in rounded-[2rem] border border-white/10 bg-[#0a0a0a] p-5 shadow-2xl sm:p-7">
+            <button
+              type="button"
+              onClick={closeAISearch}
+              disabled={aiSearching}
+              className="absolute right-4 top-4 rounded-xl border border-white/10 p-2 text-white/40 transition hover:border-white/20 hover:text-white disabled:opacity-40"
+            >
+              <X size={18} />
+            </button>
 
-      <section
-        id="categories"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8"
-      >
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <div className="mb-2 text-[11px] font-black tracking-[0.2em] text-[#b6ff00]">
-              {t.categoriesLabel}
-            </div>
+            <div className="mb-6 pr-10">
+              <div className="mb-2 flex items-center gap-2">
+                <Sparkles
+                  size={18}
+                  className="text-[#b6ff00]"
+                />
 
-            <h2 className="text-3xl font-black sm:text-4xl">
-              {t.categoriesTitle}
-            </h2>
-          </div>
+                <span className="text-xs font-black uppercase tracking-[0.2em] text-[#b6ff00]">
+                  AI SEARCH
+                </span>
+              </div>
 
-          <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/40">
-            {categories.length}{" "}
-            {t.categoryCount}
-          </div>
-        </div>
+              <h2 className="text-2xl font-black sm:text-3xl">
+                {isArabic
+                  ? "ابحث عن أي منتج"
+                  : "Find any product"}
+              </h2>
 
-        {categoriesLoading ? (
-          <div className="flex min-h-[260px] items-center justify-center rounded-[2rem] border border-white/10 bg-[#0a0a0a]">
-            <div className="text-center">
-              <Loader2
-                size={32}
-                className="mx-auto animate-spin text-[#b6ff00]"
-              />
-
-              <p className="mt-4 text-sm text-white/30">
-                {t.loading}
+              <p className="mt-2 text-sm leading-7 text-white/40">
+                {t.searchDescription ||
+                  ""}
               </p>
             </div>
-          </div>
-        ) : categoriesError ? (
-          <div className="rounded-[2rem] border border-red-500/30 bg-red-500/[0.04] px-6 py-20 text-center">
-            <FolderOpen
-              size={40}
-              className="mx-auto text-red-400"
-            />
 
-            <h3 className="mt-5 text-xl font-black text-red-300">
-              {t.categoriesError}
-            </h3>
+            <div className="relative">
+              <Search
+                size={19}
+                className={`pointer-events-none absolute top-1/2 -translate-y-1/2 text-white/30 ${
+                  isArabic
+                    ? "right-4"
+                    : "left-4"
+                }`}
+              />
 
-            <p className="mt-3 text-sm text-white/30">
-              {isArabic
-                ? "افتح Console في المتصفح لمعرفة سبب الخطأ."
-                : "Open the browser console to see the exact database error."}
-            </p>
-          </div>
-        ) : categories.length === 0 ? (
-          <div className="rounded-[2rem] border border-dashed border-white/10 bg-[#0a0a0a] px-6 py-20 text-center">
-            <FolderOpen
-              size={40}
-              className="mx-auto text-white/20"
-            />
+              <input
+                autoFocus
+                type="text"
+                value={aiQuery}
+                onChange={(event) =>
+                  setAiQuery(
+                    event.target.value
+                  )
+                }
+                onKeyDown={(event) => {
+                  if (
+                    event.key === "Enter"
+                  ) {
+                    void runAISearch();
+                  }
+                }}
+                placeholder={
+                  t.searchPlaceholder
+                }
+                className={`h-[60px] w-full rounded-2xl border border-white/10 bg-white/[0.03] text-sm text-white outline-none transition focus:border-[#b6ff00]/40 ${
+                  isArabic
+                    ? "pr-12 pl-4"
+                    : "pl-12 pr-4"
+                }`}
+              />
+            </div>
 
-            <h3 className="mt-5 text-xl font-black">
-              {t.noCategories}
-            </h3>
-          </div>
-        ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {categories.map(
-              (category) => {
-                const description =
-                  getCategoryDescription(
-                    category
-                  );
-
-                return (
-                  <Link
-                    key={category.id}
-                    href={`/category/${category.slug}`}
-                    className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] transition duration-300 hover:-translate-y-1 hover:border-[#b6ff00]/40 hover:shadow-2xl"
-                  >
-                    <div className="relative aspect-[1.25] overflow-hidden bg-[#080808]">
-                      {category.image_url ? (
-                        <img
-                          src={
-                            category.image_url
-                          }
-                          alt={
-                            isArabic
-                              ? category.name_ar
-                              : category.name_en
-                          }
-                          loading="lazy"
-                          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center">
-                          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#b6ff00]/10">
-                            <FolderOpen
-                              size={30}
-                              className="text-[#b6ff00]"
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="inline-flex rounded-full border border-[#b6ff00]/20 bg-black/60 px-3 py-1.5 text-[10px] font-black text-[#b6ff00] backdrop-blur">
-                          {t.viewProducts}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="p-5">
-                      <h3 className="text-xl font-black transition group-hover:text-[#b6ff00]">
-                        {isArabic
-                          ? category.name_ar
-                          : category.name_en}
-                      </h3>
-
-                      {description && (
-                        <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/35">
-                          {description}
-                        </p>
-                      )}
-
-                      <div className="mt-5 flex items-center justify-between">
-                        <span className="text-xs text-white/25">
-                          #{category.slug}
-                        </span>
-
-                        {isArabic ? (
-                          <ArrowLeft
-                            size={17}
-                            className="text-[#b6ff00] transition group-hover:-translate-x-1"
-                          />
-                        ) : (
-                          <ArrowRight
-                            size={17}
-                            className="text-[#b6ff00] transition group-hover:translate-x-1"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </Link>
-                );
+            <button
+              type="button"
+              onClick={() =>
+                void runAISearch()
               }
+              disabled={
+                aiSearching ||
+                !aiQuery.trim()
+              }
+              className="mt-3 flex h-[58px] w-full items-center justify-center gap-2 rounded-2xl bg-[#b6ff00] text-sm font-black text-black transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {aiSearching ? (
+                <Loader2
+                  size={18}
+                  className="animate-spin"
+                />
+              ) : (
+                <Sparkles size={18} />
+              )}
+
+              {aiSearching
+                ? t.searching
+                : t.searchButton}
+            </button>
+
+            {aiError && (
+              <div className="mt-4 rounded-2xl border border-red-500/20 bg-red-500/5 p-4 text-sm font-bold text-red-300">
+                {aiError}
+              </div>
             )}
-          </div>
-        )}
-      </section>
 
-      {/* PRODUCTS */}
+            {aiAnswer && !aiError && (
+              <div className="mt-4 rounded-2xl border border-[#b6ff00]/10 bg-[#b6ff00]/[0.03] p-4">
+                <div className="flex items-center gap-2 text-xs font-black text-[#b6ff00]">
+                  <Sparkles size={14} />
+                  AI SEARCH
+                </div>
 
-      <section
-        id="products"
-        className="mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8"
-      >
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <div className="mb-2 text-[11px] font-black tracking-[0.2em] text-[#b6ff00]">
-              {t.productsLabel}
-            </div>
+                <p className="mt-2 text-sm leading-7 text-white/60">
+                  {aiAnswer}
+                </p>
+              </div>
+            )}
 
-            <h2 className="text-3xl font-black sm:text-4xl">
-              {t.latestProducts}
-            </h2>
-          </div>
-
-          <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/40">
-            {products.length}{" "}
-            {t.productCount}
-          </div>
-        </div>
-
-        {productsLoading ? (
-          <div className="flex min-h-[350px] items-center justify-center rounded-[2rem] border border-white/10 bg-[#0a0a0a]">
-            <div className="text-center">
-              <Loader2
-                size={32}
-                className="mx-auto animate-spin text-[#b6ff00]"
-              />
-
-              <p className="mt-4 text-sm text-white/30">
-                {t.loading}
-              </p>
-            </div>
-          </div>
-        ) : products.length === 0 ? (
-          <div className="rounded-[2rem] border border-dashed border-white/10 bg-[#0a0a0a] px-6 py-24 text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.04]">
-              <Package
-                size={32}
-                className="text-white/20"
-              />
-            </div>
-
-            <h3 className="mt-6 text-xl font-black">
-              {t.noProducts}
-            </h3>
-
-            <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-white/30">
-              {t.noProductsDescription}
+            <p className="mt-4 text-center text-xs text-white/20">
+              {t.searchExample}
             </p>
           </div>
-        ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => {
-              const outOfStock =
-                product.stock <= 0;
+        </div>
+      )}
 
-              const categoryName =
-                getCategoryName(
-                  product.category_id,
-                  product.category
-                );
+      {/* ANIMATION CSS */}
+      <style jsx global>{`
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(28px);
+          }
 
-              return (
-                <Link
-                  key={product.id}
-                  href={`/products/${product.id}`}
-                  className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0a0a0a] transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl"
-                >
-                  <div className="relative aspect-square overflow-hidden bg-[#080808]">
-                    {product.image_url ? (
-                      <img
-                        src={
-                          product.image_url
-                        }
-                        alt={product.name}
-                        loading="lazy"
-                        className="h-full w-full object-contain p-4 transition duration-700 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center">
-                        <div className="text-center text-white/20">
-                          <Package
-                            size={32}
-                            className="mx-auto mb-3"
-                          />
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-                          <span className="text-xs">
-                            {t.noImage}
-                          </span>
-                        </div>
-                      </div>
-                    )}
+        @keyframes cardIn {
+          from {
+            opacity: 0;
+            transform: translateY(35px) scale(0.97);
+          }
 
-                    {outOfStock && (
-                      <div className="absolute inset-x-4 top-4">
-                        <span className="inline-flex rounded-full bg-black/70 px-3 py-1.5 text-[10px] font-bold text-white/60 backdrop-blur">
-                          {t.outOfStock}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
 
-                  <div className="p-5 sm:p-6">
-                    {categoryName && (
-                      <div className="text-[11px] font-black tracking-wide text-[#b6ff00]">
-                        {categoryName}
-                      </div>
-                    )}
+        @keyframes modalIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.96);
+          }
 
-                    <h3 className="mt-2 line-clamp-1 text-xl font-black">
-                      {product.name}
-                    </h3>
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
 
-                    {product.description && (
-                      <p className="mt-2 line-clamp-2 min-h-[48px] text-sm leading-6 text-white/35">
-                        {product.description}
-                      </p>
-                    )}
+        @keyframes modalBg {
+          from {
+            opacity: 0;
+          }
 
-                    <div className="mt-5 flex items-end justify-between gap-3">
-                      <div>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-2xl font-black text-[#b6ff00]">
-                            {Number(
-                              product.price
-                            ).toLocaleString(
-                              isArabic
-                                ? "ar-EG"
-                                : "en-EG"
-                            )}
-                          </span>
+          to {
+            opacity: 1;
+          }
+        }
 
-                          <span className="text-[11px] font-bold text-white/30">
-                            {t.egp}
-                          </span>
-                        </div>
+        @keyframes headerIn {
+          from {
+            opacity: 0;
+            transform: translateY(-15px);
+          }
 
-                        {product.old_price &&
-                          product.old_price >
-                            product.price && (
-                            <span className="text-xs text-white/25 line-through">
-                              {Number(
-                                product.old_price
-                              ).toLocaleString(
-                                isArabic
-                                  ? "ar-EG"
-                                  : "en-EG"
-                              )}{" "}
-                              {t.egp}
-                            </span>
-                          )}
-                      </div>
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-                      <span className="flex items-center gap-1.5 text-xs font-black text-white/35 transition group-hover:text-white">
-                        {t.details}
+        @keyframes lineGrow {
+          from {
+            width: 0;
+            opacity: 0;
+          }
 
-                        {isArabic ? (
-                          <ArrowLeft size={14} />
-                        ) : (
-                          <ArrowRight
-                            size={14}
-                          />
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        )}
-      </section>
+          to {
+            width: 32px;
+            opacity: 1;
+          }
+        }
 
-      {/* FOOTER */}
+        @keyframes heroGlow {
+          0%,
+          100% {
+            transform: translateX(-50%) scale(1);
+            opacity: 0.7;
+          }
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-8 text-center sm:flex-row sm:px-8 sm:text-right">
-          <div className="text-xs text-white/25">
-            © {new Date().getFullYear()} —{" "}
-            {t.footer}
-          </div>
+          50% {
+            transform: translateX(-50%) scale(1.12);
+            opacity: 1;
+          }
+        }
 
-          <div className="text-xs font-bold text-white/20">
-            {isArabic
-              ? "العربية / English"
-              : "English / العربية"}
+        @keyframes floatSlow {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0);
+          }
+
+          50% {
+            transform: translate3d(-25px, -30px, 0);
+          }
+        }
+
+        @keyframes floatReverse {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0);
+          }
+
+          50% {
+            transform: translate3d(30px, 25px, 0);
+          }
+        }
+
+        @keyframes sparkle {
+          0%,
+          100% {
+            transform: rotate(0deg) scale(1);
+          }
+
+          50% {
+            transform: rotate(12deg) scale(1.12);
+          }
+        }
+
+        .animate-fade-up {
+          opacity: 0;
+          animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+            forwards;
+        }
+
+        .animate-card-in {
+          opacity: 0;
+          animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+            forwards;
+        }
+
+        .animate-modal-in {
+          animation: modalIn 0.35s cubic-bezier(0.22, 1, 0.36, 1)
+            forwards;
+        }
+
+        .animate-modal-bg {
+          animation: modalBg 0.25s ease-out forwards;
+        }
+
+        .animate-header {
+          animation: headerIn 0.6s ease-out forwards;
+        }
+
+        .animate-line-grow {
+          animation: lineGrow 0.8s ease-out forwards;
+        }
+
+        .animate-hero-glow {
+          animation: heroGlow 7s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+          animation: floatSlow 10s ease-in-out infinite;
+        }
+
+        .animate-float-reverse {
+          animation: floatReverse 12s ease-in-out infinite;
+        }
+
+        .animate-sparkle {
+          animation: sparkle 2.5s ease-in-out infinite;
+        }
+
+        .animation-delay-100 {
+          animation-delay: 100ms;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 200ms;
+        }
+
+        .animation-delay-300 {
+          animation-delay: 300ms;
+        }
+
+        .animation-delay-400 {
+          animation-delay: 400ms;
+        }
+
+        .animation-delay-500 {
+          animation-delay: 500ms;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
+          }
+        }
+      `}</style>
+    </>
+  );
+}
+
+/* -------------------------------- */
+/* SECTION HEADING */
+/* -------------------------------- */
+
+function SectionHeading({
+  label,
+  title,
+  count,
+  countText,
+}: {
+  label: string;
+  title: string;
+  count: number;
+  countText: string;
+}) {
+  return (
+    <div className="mb-8 flex items-end justify-between gap-4">
+      <div className="animate-fade-up">
+        <div className="mb-2 text-[11px] font-black tracking-[0.2em] text-[#b6ff00]">
+          {label}
+        </div>
+
+        <h2 className="text-3xl font-black sm:text-4xl">
+          {title}
+        </h2>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/40">
+        {count} {countText}
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* LOADING */
+/* -------------------------------- */
+
+function LoadingBox({
+  text,
+}: {
+  text: string;
+}) {
+  return (
+    <div className="flex min-h-[300px] items-center justify-center rounded-[2rem] border border-white/10 bg-[#0a0a0a]">
+      <div className="text-center">
+        <Loader2
+          size={32}
+          className="mx-auto animate-spin text-[#b6ff00]"
+        />
+
+        <p className="mt-4 text-sm text-white/30">
+          {text}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* EMPTY BOX */
+/* -------------------------------- */
+
+function EmptyBox({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description?: string;
+}) {
+  return (
+    <div className="rounded-[2rem] border border-dashed border-white/10 bg-[#0a0a0a] px-6 py-24 text-center">
+      {icon}
+
+      <h3 className="mt-6 text-xl font-black">
+        {title}
+      </h3>
+
+      {description && (
+        <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-white/30">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* PRODUCT IMAGE */
+/* -------------------------------- */
+
+function ProductCardImage({
+  product,
+  outOfStock,
+  noImage,
+  outOfStockText,
+}: {
+  product: Product;
+  outOfStock: boolean;
+  noImage: string;
+  outOfStockText: string;
+}) {
+  return (
+    <div className="relative aspect-square overflow-hidden bg-[#080808]">
+      {product.image_url ? (
+        <img
+          src={product.image_url}
+          alt={product.name}
+          loading="lazy"
+          className="h-full w-full object-contain p-4 transition duration-700 group-hover:scale-110"
+        />
+      ) : (
+        <div className="flex h-full items-center justify-center">
+          <div className="text-center text-white/20">
+            <Package
+              size={32}
+              className="mx-auto mb-3"
+            />
+
+            <span className="text-xs">
+              {noImage}
+            </span>
           </div>
         </div>
-      </footer>
-    </main>
+      )}
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+
+      {outOfStock && (
+        <div className="absolute inset-x-4 top-4">
+          <span className="inline-flex rounded-full bg-black/70 px-3 py-1.5 text-[10px] font-bold text-white/60 backdrop-blur">
+            {outOfStockText}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* PRODUCT PRICE */
+/* -------------------------------- */
+
+function ProductPrice({
+  product,
+  isArabic,
+  currency,
+  details,
+  arrow,
+}: {
+  product: Product;
+  isArabic: boolean;
+  currency: string;
+  details: string;
+  arrow: React.ReactNode;
+}) {
+  return (
+    <div className="mt-5 flex items-end justify-between gap-3">
+      <div>
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-black text-[#b6ff00]">
+            {Number(
+              product.price
+            ).toLocaleString(
+              isArabic
+                ? "ar-EG"
+                : "en-EG"
+            )}
+          </span>
+
+          <span className="text-[11px] font-bold text-white/30">
+            {currency}
+          </span>
+        </div>
+
+        {product.old_price &&
+          product.old_price >
+            product.price && (
+            <span className="text-xs text-white/25 line-through">
+              {Number(
+                product.old_price
+              ).toLocaleString(
+                isArabic
+                  ? "ar-EG"
+                  : "en-EG"
+              )}{" "}
+              {currency}
+            </span>
+          )}
+      </div>
+
+      <span className="flex items-center gap-1.5 text-xs font-black text-white/35 transition group-hover:text-white">
+        {details}
+        {arrow}
+      </span>
+    </div>
   );
 }
