@@ -46,128 +46,97 @@ type AISearchResult = {
 };
 
 const translations = {
+  ar: {
+    store: "NEXORA",
+    admin: "لوحة التحكم",
+    cart: "السلة",
+    heroLabel: "تسوق بثقة",
+    heroTitle: "منتجات مختارة",
+    heroTitleMuted: "مصممة لتناسب احتياجاتك.",
+    heroDescription:
+      "اكتشف مجموعة المنتجات المتاحة في متجرنا، وتصفح الأقسام والمنتجات واختر ما يناسبك بسهولة.",
+    categoriesLabel: "الأقسام",
+    categoriesTitle: "تصفح الأقسام",
+    productsLabel: "المنتجات",
+    latestProducts: "أحدث المنتجات",
+    productCount: "منتج",
+    categoryCount: "قسم",
+    noCategories: "لا توجد أقسام حاليًا",
+    categoriesError: "تعذر تحميل الأقسام",
+    noProducts: "لا توجد منتجات حاليًا",
+    noProductsDescription:
+      "ستظهر المنتجات هنا تلقائيًا بمجرد إضافتها من لوحة التحكم.",
+    noImage: "لا توجد صورة",
+    details: "التفاصيل",
+    egp: "جنيه",
+    outOfStock: "غير متوفر",
+    language: "English",
+    loading: "جاري التحميل...",
+    viewProducts: "عرض المنتجات",
+    searchPlaceholder:
+      "اسأل الذكاء الاصطناعي عن المنتج الذي تبحث عنه...",
+    searchDescription:
+      "اكتب ما تبحث عنه، ودع الذكاء الاصطناعي يساعدك في العثور على المنتج المناسب.",
+    searchButton: "بحث ذكي",
+    searching: "جاري البحث...",
+    searchExample:
+      'مثال: "عايز حاجة للركبة أقل من 500 جنيه"',
+    searchClose: "إغلاق",
+    searchNoResults:
+      "لم أجد منتجًا مناسبًا لطلبك داخل المتجر.",
+    searchError:
+      "تعذر تشغيل البحث الذكي حاليًا. حاول مرة أخرى.",
+    footer:
+      "جميع الحقوق محفوظة. متجر NEXORA الإلكتروني الاحترافي.",
+  },
 
-
-ar: {
-  store: "المتجر",
-  admin: "لوحة التحكم",
-  cart: "السلة",
-
-  heroLabel: "تسوق بثقة",
-  heroTitle: "منتجات مختارة",
-  heroTitleMuted: "مصممة لتناسب احتياجاتك.",
-  heroDescription:
-    "اكتشف مجموعة المنتجات المتاحة في متجرنا، وتصفح الأقسام والمنتجات واختر ما يناسبك بسهولة.",
-
-  categoriesLabel: "الأقسام",
-  categoriesTitle: "تصفح الأقسام",
-  productsLabel: "المنتجات",
-  latestProducts: "أحدث المنتجات",
-
-  productCount: "منتج",
-  categoryCount: "قسم",
-
-  noCategories: "لا توجد أقسام حاليًا",
-  categoriesError: "تعذر تحميل الأقسام",
-
-  noProducts: "لا توجد منتجات حاليًا",
-  noProductsDescription:
-    "ستظهر المنتجات هنا تلقائيًا بمجرد إضافتها من لوحة التحكم.",
-
-  noImage: "لا توجد صورة",
-  details: "التفاصيل",
-  egp: "جنيه",
-  outOfStock: "غير متوفر",
-
-  language: "English",
-  loading: "جاري التحميل...",
-  viewProducts: "عرض المنتجات",
-
-  searchPlaceholder:
-    "اسأل الذكاء الاصطناعي عن المنتج الذي تبحث عنه...",
-  searchDescription:
-    "اكتب ما تبحث عنه، ودع الذكاء الاصطناعي يساعدك في العثور على المنتج المناسب.",
-  searchButton: "بحث ذكي",
-  searching: "جاري البحث...",
-
-  searchExample:
-    'مثال: "عايز حاجة للركبة أقل من 500 جنيه"',
-
-  searchClose: "إغلاق",
-
-  searchNoResults:
-    "لم أجد منتجًا مناسبًا لطلبك داخل المتجر.",
-
-  searchError:
-    "تعذر تشغيل البحث الذكي حاليًا. حاول مرة أخرى.",
-
-  footer:
-    "جميع الحقوق محفوظة. متجر إلكتروني احترافي متعدد اللغات.",
-},
-
-en: {
-  store: "Store",
-  admin: "Admin",
-  cart: "Cart",
-
-  heroLabel: "SHOP WITH CONFIDENCE",
-  heroTitle: "Curated products",
-  heroTitleMuted: "made for your needs.",
-  heroDescription:
-    "Explore our categories and products, view details and prices, and choose what works best for you.",
-
-  categoriesLabel: "CATEGORIES",
-  categoriesTitle: "Browse categories",
-  productsLabel: "PRODUCTS",
-  latestProducts: "Latest products",
-
-  productCount: "products",
-  categoryCount: "categories",
-
-  noCategories: "No categories available",
-  categoriesError: "Could not load categories",
-
-  noProducts: "No products available",
-  noProductsDescription:
-    "Products will appear here automatically once they are added from the admin dashboard.",
-
-  noImage: "No image",
-  details: "View details",
-  egp: "EGP",
-  outOfStock: "Out of stock",
-
-  language: "العربية",
-  loading: "Loading...",
-  viewProducts: "View products",
-
-  searchPlaceholder:
-    "Ask AI about the product you are looking for...",
-  searchDescription:
-    "Describe what you need and let AI help you find the right product.",
-  searchButton: "Smart Search",
-  searching: "Searching...",
-
-  searchExample:
-    'Example: "I need something for my knee under 500 EGP"',
-
-  searchClose: "Close",
-
-  searchNoResults:
-    "I couldn't find a suitable product in the store.",
-
-  searchError:
-    "Smart search is temporarily unavailable. Please try again.",
-
-  footer:
-    "All rights reserved. A professional multilingual online store.",
-},
-
- 
-
+  en: {
+    store: "NEXORA",
+    admin: "Admin",
+    cart: "Cart",
+    heroLabel: "SHOP WITH CONFIDENCE",
+    heroTitle: "Curated products",
+    heroTitleMuted: "made for your needs.",
+    heroDescription:
+      "Explore our categories and products, view details and prices, and choose what works best for you.",
+    categoriesLabel: "CATEGORIES",
+    categoriesTitle: "Browse categories",
+    productsLabel: "PRODUCTS",
+    latestProducts: "Latest products",
+    productCount: "products",
+    categoryCount: "categories",
+    noCategories: "No categories available",
+    categoriesError: "Could not load categories",
+    noProducts: "No products available",
+    noProductsDescription:
+      "Products will appear here automatically once they are added from the admin dashboard.",
+    noImage: "No image",
+    details: "View details",
+    egp: "EGP",
+    outOfStock: "Out of stock",
+    language: "العربية",
+    loading: "Loading...",
+    viewProducts: "View products",
+    searchPlaceholder:
+      "Ask AI about the product you are looking for...",
+    searchDescription:
+      "Describe what you need and let AI help you find the right product.",
+    searchButton: "Smart Search",
+    searching: "Searching...",
+    searchExample:
+      'Example: "I need something for my knee under 500 EGP"',
+    searchClose: "Close",
+    searchNoResults:
+      "I couldn't find a suitable product in the store.",
+    searchError:
+      "Smart search is temporarily unavailable. Please try again.",
+    footer:
+      "All rights reserved. NEXORA is a professional multilingual online store.",
+  },
 };
 
 export default function HomePage() {
-const [language, setLanguage] = useState<Language>("ar");
+  const [language, setLanguage] = useState<Language>("ar");
 
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -185,33 +154,28 @@ const [language, setLanguage] = useState<Language>("ar");
     useState(false);
 
   const [aiQuery, setAiQuery] = useState("");
-
   const [aiAnswer, setAiAnswer] = useState("");
-
   const [aiResults, setAiResults] = useState<string[]>([]);
-
   const [aiError, setAiError] = useState("");
-
   const [showAISearch, setShowAISearch] =
     useState(false);
 
   const t = translations[language];
-
   const isArabic = language === "ar";
 
-useEffect(() => {
-  const savedLanguage =
-    window.localStorage.getItem("store-language");
+  useEffect(() => {
+    const savedLanguage =
+      window.localStorage.getItem("store-language");
 
-  if (
-    savedLanguage === "ar" ||
-    savedLanguage === "en"
-  ) {
-    window.setTimeout(() => {
-      setLanguage(savedLanguage);
-    }, 0);
-  }
-}, []);
+    if (
+      savedLanguage === "ar" ||
+      savedLanguage === "en"
+    ) {
+      window.setTimeout(() => {
+        setLanguage(savedLanguage);
+      }, 0);
+    }
+  }, []);
 
   async function loadCategories() {
     setCategoriesLoading(true);
@@ -228,13 +192,10 @@ useEffect(() => {
 
     if (error) {
       console.error("Categories error:", error);
-
       setCategories([]);
       setCategoriesError(true);
     } else {
-      setCategories(
-        (data || []) as Category[]
-      );
+      setCategories((data || []) as Category[]);
     }
 
     setCategoriesLoading(false);
@@ -257,9 +218,7 @@ useEffect(() => {
       console.error("Products error:", error);
       setProducts([]);
     } else {
-      setProducts(
-        (data || []) as Product[]
-      );
+      setProducts((data || []) as Product[]);
     }
 
     setProductsLoading(false);
@@ -367,8 +326,7 @@ useEffect(() => {
 
       if (!response.ok) {
         throw new Error(
-          data.error ||
-            t.searchError
+          data.error || t.searchError
         );
       }
 
@@ -423,6 +381,7 @@ useEffect(() => {
         className="min-h-screen overflow-hidden bg-[#050505] text-white"
       >
         {/* BACKGROUND */}
+
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
           <div className="absolute left-1/2 top-[-300px] h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-[#b6ff00]/10 blur-[170px] animate-pulse-slow" />
 
@@ -434,6 +393,7 @@ useEffect(() => {
         </div>
 
         {/* HEADER */}
+
         <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/80 backdrop-blur-2xl animate-header">
           <div className="mx-auto flex min-h-[72px] max-w-7xl items-center justify-between px-4 sm:px-8">
             <Link
@@ -442,7 +402,7 @@ useEffect(() => {
             >
               <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-[#b6ff00] text-xl font-black text-black transition duration-300 group-hover:scale-110 group-hover:rotate-3">
                 <span className="relative z-10">
-                  F
+                  N
                 </span>
 
                 <span className="absolute inset-0 rounded-xl bg-[#b6ff00] opacity-40 blur-md transition group-hover:opacity-70" />
@@ -497,6 +457,7 @@ useEffect(() => {
         </header>
 
         {/* HERO */}
+
         <section className="relative z-10 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-1/2 top-[-200px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#b6ff00]/10 blur-[150px] animate-hero-glow" />
@@ -507,6 +468,7 @@ useEffect(() => {
           <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-20 sm:px-8 sm:pb-28 sm:pt-28">
             <div className="max-w-4xl">
               {/* LABEL */}
+
               <div className="mb-5 flex items-center gap-3 animate-fade-up animation-delay-100">
                 <span className="h-px w-8 bg-[#b6ff00] animate-line-grow" />
 
@@ -516,6 +478,7 @@ useEffect(() => {
               </div>
 
               {/* TITLE */}
+
               <h1 className="animate-fade-up animation-delay-200 text-5xl font-black leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl">
                 {t.heroTitle}
 
@@ -527,11 +490,13 @@ useEffect(() => {
               </h1>
 
               {/* DESCRIPTION */}
+
               <p className="mt-7 max-w-2xl animate-fade-up animation-delay-300 text-sm leading-8 text-white/45 sm:text-lg sm:leading-9">
                 {t.heroDescription}
               </p>
 
               {/* AI SEARCH */}
+
               <div className="mt-10 max-w-3xl animate-fade-up animation-delay-400">
                 <div className="group relative rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-2 shadow-2xl backdrop-blur-xl transition duration-500 hover:border-[#b6ff00]/20">
                   <div className="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-r from-[#b6ff00]/0 via-[#b6ff00]/10 to-[#b6ff00]/0 opacity-0 blur-sm transition duration-500 group-hover:opacity-100" />
@@ -592,9 +557,7 @@ useEffect(() => {
                             className="animate-spin"
                           />
                         ) : (
-                          <Sparkles
-                            size={18}
-                          />
+                          <Sparkles size={18} />
                         )}
 
                         <span>
@@ -620,6 +583,7 @@ useEffect(() => {
               </div>
 
               {/* HERO BUTTONS */}
+
               <div className="mt-7 flex flex-wrap gap-3 animate-fade-up animation-delay-500">
                 <Link
                   href="#categories"
@@ -649,6 +613,7 @@ useEffect(() => {
               </div>
 
               {/* AI RESPONSE */}
+
               {(aiAnswer ||
                 aiError ||
                 aiSearching) && (
@@ -702,6 +667,7 @@ useEffect(() => {
         </section>
 
         {/* AI RESULTS */}
+
         {aiResults.length > 0 && (
           <section className="relative z-10 mx-auto max-w-7xl px-5 pb-24 sm:px-8 animate-fade-up">
             <div className="mb-8 flex items-end justify-between gap-4">
@@ -814,6 +780,7 @@ useEffect(() => {
         )}
 
         {/* CATEGORIES */}
+
         <section
           id="categories"
           className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8"
@@ -946,6 +913,7 @@ useEffect(() => {
         </section>
 
         {/* PRODUCTS */}
+
         <section
           id="products"
           className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8"
@@ -1029,13 +997,9 @@ useEffect(() => {
                           details={t.details}
                           arrow={
                             isArabic ? (
-                              <ArrowLeft
-                                size={14}
-                              />
+                              <ArrowLeft size={14} />
                             ) : (
-                              <ArrowRight
-                                size={14}
-                              />
+                              <ArrowRight size={14} />
                             )
                           }
                         />
@@ -1049,6 +1013,7 @@ useEffect(() => {
         </section>
 
         {/* FOOTER */}
+
         <footer className="relative z-10 border-t border-white/10">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-8 text-center sm:flex-row sm:px-8 sm:text-right">
             <div className="text-xs text-white/25">
@@ -1066,6 +1031,7 @@ useEffect(() => {
       </main>
 
       {/* AI SEARCH FLOATING BUTTON */}
+
       {!showAISearch && (
         <button
           type="button"
@@ -1081,6 +1047,7 @@ useEffect(() => {
       )}
 
       {/* AI SEARCH MODAL */}
+
       {showAISearch && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-md animate-modal-bg">
           <div className="relative w-full max-w-2xl animate-modal-in rounded-[2rem] border border-white/10 bg-[#0a0a0a] p-5 shadow-2xl sm:p-7">
@@ -1112,8 +1079,7 @@ useEffect(() => {
               </h2>
 
               <p className="mt-2 text-sm leading-7 text-white/40">
-                {t.searchDescription ||
-                  ""}
+                {t.searchDescription}
               </p>
             </div>
 
@@ -1206,6 +1172,7 @@ useEffect(() => {
       )}
 
       {/* ANIMATION CSS */}
+
       <style jsx global>{`
         @keyframes fadeUp {
           from {
@@ -1325,47 +1292,57 @@ useEffect(() => {
 
         .animate-fade-up {
           opacity: 0;
-          animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+          animation: fadeUp 0.8s
+            cubic-bezier(0.22, 1, 0.36, 1)
             forwards;
         }
 
         .animate-card-in {
           opacity: 0;
-          animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1)
+          animation: cardIn 0.7s
+            cubic-bezier(0.22, 1, 0.36, 1)
             forwards;
         }
 
         .animate-modal-in {
-          animation: modalIn 0.35s cubic-bezier(0.22, 1, 0.36, 1)
+          animation: modalIn 0.35s
+            cubic-bezier(0.22, 1, 0.36, 1)
             forwards;
         }
 
         .animate-modal-bg {
-          animation: modalBg 0.25s ease-out forwards;
+          animation: modalBg 0.25s ease-out
+            forwards;
         }
 
         .animate-header {
-          animation: headerIn 0.6s ease-out forwards;
+          animation: headerIn 0.6s ease-out
+            forwards;
         }
 
         .animate-line-grow {
-          animation: lineGrow 0.8s ease-out forwards;
+          animation: lineGrow 0.8s ease-out
+            forwards;
         }
 
         .animate-hero-glow {
-          animation: heroGlow 7s ease-in-out infinite;
+          animation: heroGlow 7s ease-in-out
+            infinite;
         }
 
         .animate-float-slow {
-          animation: floatSlow 10s ease-in-out infinite;
+          animation: floatSlow 10s ease-in-out
+            infinite;
         }
 
         .animate-float-reverse {
-          animation: floatReverse 12s ease-in-out infinite;
+          animation: floatReverse 12s ease-in-out
+            infinite;
         }
 
         .animate-sparkle {
-          animation: sparkle 2.5s ease-in-out infinite;
+          animation: sparkle 2.5s ease-in-out
+            infinite;
         }
 
         .animation-delay-100 {

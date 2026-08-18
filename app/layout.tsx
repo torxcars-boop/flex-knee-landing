@@ -5,8 +5,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "NEXORA | Smart Online Store",
+
   description:
-    "Discover products at NEXORA — a modern multilingual online store for everyday needs.",
+    "NEXORA is a modern online store offering carefully selected products for everyday needs.",
+
   robots: {
     index: true,
     follow: true,
@@ -36,8 +38,10 @@ export default function RootLayout({
 
       <body>
         <PageTransition />
+
         {children}
       </body>
     </html>
   );
 }
+
