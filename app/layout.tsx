@@ -4,9 +4,9 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FLEX | Premium Knee Support",
+  title: "NEXORA | Smart Online Store",
   description:
-    "Discover FLEX premium knee support designed for comfort, stability, and everyday movement.",
+    "Discover products at NEXORA — a modern multilingual online store for everyday needs.",
   robots: {
     index: true,
     follow: true,
@@ -35,10 +35,9 @@ export default function RootLayout({
       </head>
 
       <body>
-  <PageTransition />
-  {children}
-</body>
-
+        <PageTransition />
+        {children}
+      </body>
     </html>
   );
 }
